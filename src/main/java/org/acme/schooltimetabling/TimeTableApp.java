@@ -16,6 +16,17 @@
 
 package org.acme.schooltimetabling;
 
+import org.acme.schooltimetabling.domain.Lesson;
+import org.acme.schooltimetabling.domain.PIPlanningSchedule;
+import org.acme.schooltimetabling.domain.Room;
+import org.acme.schooltimetabling.domain.TimeTable;
+import org.acme.schooltimetabling.solver.TimeTableConstraintProvider;
+import org.optaplanner.core.api.solver.Solver;
+import org.optaplanner.core.api.solver.SolverFactory;
+import org.optaplanner.core.config.solver.SolverConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -24,17 +35,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.acme.schooltimetabling.domain.Lesson;
-import org.acme.schooltimetabling.domain.Room;
-import org.acme.schooltimetabling.domain.TimeTable;
-import org.acme.schooltimetabling.domain.PIPlanningSchedule;
-import org.acme.schooltimetabling.solver.TimeTableConstraintProvider;
-import org.optaplanner.core.api.solver.Solver;
-import org.optaplanner.core.api.solver.SolverFactory;
-import org.optaplanner.core.config.solver.SolverConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class TimeTableApp {
 
@@ -103,7 +103,7 @@ public class TimeTableApp {
         lessonList.add(new Lesson(id++, "English", "P. Cruz", "10th grade"));
         lessonList.add(new Lesson(id++, "Spanish", "P. Cruz", "10th grade"));
 
-        return new TimeTable(timeslotList, roomList, lessonList);
+        return new TimeTable(timeslotList, roomList, lessonList, null);
     }
 
     private static void printTimetable(TimeTable timeTable) {
