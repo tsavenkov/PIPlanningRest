@@ -16,38 +16,34 @@
 
 package org.acme.schooltimetabling.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-
-public class PIPlanningSchedule {
+@AllArgsConstructor
+@Builder
+public class Sprint {
 
     @Getter
     @Setter
-    private DayOfWeek dayOfWeek;
-    @Getter
-    @Setter
-    private LocalTime startTime;
-    @Getter
-    @Setter
-    private LocalTime endTime;
-
-    public PIPlanningSchedule(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
-        this.dayOfWeek = dayOfWeek;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public PIPlanningSchedule(DayOfWeek dayOfWeek, LocalTime startTime) {
-        this(dayOfWeek, startTime, startTime.plusMinutes(50));
-    }
+    private String name;
 
     @Override
     public String toString() {
-        return dayOfWeek + " " + startTime;
+        return name;
     }
 
+    @Getter
+    @Setter
+    private Integer maxFeCapacity;
+
+    @Getter
+    @Setter
+    private Integer maxBeCapacity;
+
+    @Getter
+    @Setter
+    private Integer maxSdCapacity;
 
 }

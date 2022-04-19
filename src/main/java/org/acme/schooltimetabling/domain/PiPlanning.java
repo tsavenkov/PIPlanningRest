@@ -17,9 +17,7 @@
 package org.acme.schooltimetabling.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
@@ -32,26 +30,42 @@ import java.util.List;
 @PlanningSolution
 @AllArgsConstructor
 @NoArgsConstructor
-public class TimeTable {
+public class PiPlanning {
 
-    @ProblemFactCollectionProperty
-    @ValueRangeProvider(id = "timeslotRange")
-    @Getter
-    @Setter
-    private List<PIPlanningSchedule> timeslotList;
-    @ProblemFactCollectionProperty
-    @ValueRangeProvider(id = "roomRange")
-    @Getter
-    @Setter
-    private List<Room> roomList;
-
-    @Getter
-    @Setter
-    @PlanningEntityCollectionProperty
-    private List<Lesson> lessonList;
-
-    @Getter
-    @Setter
-    @PlanningScore
     private HardSoftScore score;
+    private List<Sprint> sprintList;
+    private List<UserStory> userStoryList;
+
+    @ProblemFactCollectionProperty
+    @ValueRangeProvider(id = "sprintRange")
+    public List<Sprint> getSprintList() {
+        return sprintList;
+    }
+
+    public void setSprintList(List<Sprint> sprintList) {
+        this.sprintList = sprintList;
+    }
+
+    @PlanningEntityCollectionProperty
+    public List<UserStory> getUserStoryList() {
+        return userStoryList;
+    }
+
+    public void setUserStoryList(List<UserStory> userStoryList) {
+        this.userStoryList = userStoryList;
+    }
+
+
+    @PlanningScore
+    public HardSoftScore getScore() {
+        return score;
+    }
+
+    public void setScore(HardSoftScore score) {
+        this.score = score;
+    }
+
+
+
+
 }

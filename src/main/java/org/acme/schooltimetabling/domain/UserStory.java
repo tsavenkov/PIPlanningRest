@@ -16,10 +16,7 @@
 
 package org.acme.schooltimetabling.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.lookup.PlanningId;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
@@ -27,7 +24,8 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 @AllArgsConstructor
 @NoArgsConstructor
 @PlanningEntity
-public class Lesson {
+@Builder
+public class UserStory {
 
     @PlanningId
     @Getter
@@ -40,34 +38,33 @@ public class Lesson {
 
     @Getter
     @Setter
-    private String teacher;
+    private Integer feCapacity;
 
     @Getter
     @Setter
-    private String studentGroup;
+    private Integer beCapacity;
 
-    @PlanningVariable(valueRangeProviderRefs = "timeslotRange")
     @Getter
     @Setter
-    private PIPlanningSchedule timeslot;
-    @PlanningVariable(valueRangeProviderRefs = "roomRange")
+    private Integer sdCapacity;
+
     @Getter
     @Setter
-    private Room room;
+    private Feature feature;
 
 
-    public Lesson(long id, String subject, String teacher, String studentGroup) {
-        this.id = id;
-        this.subject = subject;
-        this.teacher = teacher;
-        this.studentGroup = studentGroup;
+    @PlanningVariable(valueRangeProviderRefs = "sprintRange")
+    public Sprint getSprint() {
+        return sprint;
     }
 
-    public Lesson(long id, String subject, String teacher, String studentGroup, PIPlanningSchedule timeslot, Room room) {
-        this(id, subject, teacher, studentGroup);
-        this.timeslot = timeslot;
-        this.room = room;
+    public void setSprint(Sprint sprint) {
+        this.sprint = sprint;
     }
+
+    private Sprint sprint;
+
+
 
     @Override
     public String toString() {
