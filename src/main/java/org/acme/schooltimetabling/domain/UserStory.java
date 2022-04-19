@@ -57,7 +57,6 @@ public class UserStory {
     public Sprint getSprint() {
         return sprint;
     }
-
     public void setSprint(Sprint sprint) {
         this.sprint = sprint;
     }

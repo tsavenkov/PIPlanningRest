@@ -19,6 +19,7 @@ package org.acme.schooltimetabling.solver;
 import org.acme.schooltimetabling.domain.UserStory;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.score.stream.Constraint;
+import org.optaplanner.core.api.score.stream.ConstraintCollectors;
 import org.optaplanner.core.api.score.stream.ConstraintFactory;
 import org.optaplanner.core.api.score.stream.ConstraintProvider;
 
@@ -45,17 +46,15 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 
     Constraint feStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // fe story points for spring can not be more than total sprint fe capacity.
+
+//        items.stream().collect(
+//                        Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQty)));
+
+
         Constraint a = constraintFactory.forEach(UserStory.class)
-                .groupBy(UserStory::getSprint, sum(UserStory::getFeCapacity))
+                .groupBy(UserStory::getSprint, ConstraintCollectors.sum(UserStory::getFeCapacity))
+                .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity())
                 .penalize("FE story points conflict", HardSoftScore.ONE_HARD);
-
-
-//            Constraint b =  constraintFactory.forEach(CloudProcess.class)
-//                            .groupBy(CloudProcess::getComputer, sum(CloudProcess::getRequiredCpuPower))
-//                            .filter((computer, requiredCpuPower) -> requiredCpuPower > computer.getCpuPower())
-//                            .penalize("requiredCpuPowerTotal",
-//                                    HardSoftScore.ONE_HARD,
-//                                    (computer, requiredCpuPower) -> requiredCpuPower - computer.getCpuPower());
 
         return a;
     }
