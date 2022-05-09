@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.acme.schooltimetabling;
+package org.acme.piplanning;
 
-import org.acme.schooltimetabling.domain.Feature;
-import org.acme.schooltimetabling.domain.Sprint;
-import org.acme.schooltimetabling.domain.PiPlanning;
-import org.acme.schooltimetabling.domain.UserStory;
-import org.acme.schooltimetabling.solver.TimeTableConstraintProvider;
+import org.acme.piplanning.domain.Feature;
+import org.acme.piplanning.domain.Sprint;
+import org.acme.piplanning.domain.PiPlanning;
+import org.acme.piplanning.domain.UserStory;
+import org.acme.piplanning.solver.TimeTableConstraintProvider;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 import org.optaplanner.core.config.solver.SolverConfig;
@@ -42,7 +42,7 @@ public class TimeTableApp {
                 .withConstraintProviderClass(TimeTableConstraintProvider.class)
                 // The solver runs only for 5 seconds on this small dataset.
                 // It's recommended to run for at least 5 minutes ("5m") otherwise.
-                .withTerminationSpentLimit(Duration.ofSeconds(5)));
+                .withTerminationSpentLimit(Duration.ofSeconds(10)));
 
         // Load the problem
         PiPlanning problem = generateDemoData();
@@ -62,33 +62,33 @@ public class TimeTableApp {
                 .name("Sprint_1")
                 .maxSdCapacity(5)
                 .maxBeCapacity(17)
-                .maxFeCapacity(11).build());
+                .maxFeCapacity(10).build());
         sprintList.add(Sprint.builder()
                 .name("Sprint_2")
                 .maxSdCapacity(7)
                 .maxBeCapacity(11)
-                .maxFeCapacity(8).build());
-        sprintList.add(Sprint.builder()
-                .name("Sprint_3")
-                .maxSdCapacity(7)
-                .maxBeCapacity(18)
-                .maxFeCapacity(11).build());
+                .maxFeCapacity(10).build());
+//        sprintList.add(Sprint.builder()
+//                .name("Sprint_3")
+//                .maxSdCapacity(7)
+//                .maxBeCapacity(18)
+//                .maxFeCapacity(10).build());
 
 
         List<UserStory> userStoriesList = new ArrayList<>();
-        long id = 0;
+        int id = 0;
 
         Feature feature1 = Feature.builder()
                 .subject("Plain Vanilla")
                 .build();
-        Feature feature2 = Feature.builder()
-                .subject("Table View New/Change")
-                .build();
+//        Feature feature2 = Feature.builder()
+//                .subject("Table View New/Change")
+//                .build();
 
 
         userStoriesList.add(UserStory.builder()
                 .id(id++)
-                .subject("FE: Renaming field")
+                .subject("FE1")
                 .sprint(sprintList.get(0))
                 .feCapacity(2)
                 .feature(feature1)
@@ -96,55 +96,56 @@ public class TimeTableApp {
         userStoriesList.add(UserStory.builder()
                 .id(id++)
                 .sprint(sprintList.get(0))
-                .subject("BE: Renaming and adding the new user")
-                .beCapacity(8)
+                .subject("FE2")
+                .feCapacity(2)
+                .feature(feature1)
+                .build());
+//        userStoriesList.add(UserStory.builder()
+//                .id(id++)
+//                .sprint(sprintList.get(0))
+//                .subject("SD: Renaming field")
+//                .feCapacity(3)
+//                .feature(feature1)
+//                .build());
+
+
+        userStoriesList.add(UserStory.builder()
+                .id(id++)
+                .subject("FE3")
+                .sprint(sprintList.get(0))
+                .feCapacity(7)
                 .feature(feature1)
                 .build());
         userStoriesList.add(UserStory.builder()
                 .id(id++)
                 .sprint(sprintList.get(0))
-                .subject("SD: Renaming field")
-                .sdCapacity(2)
+                .subject("FE4")
+                .feCapacity(7)
                 .feature(feature1)
                 .build());
-
-
-        userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .subject("FE: T1 - Reuse configuration form")
-                .sprint(sprintList.get(0))
-                .feCapacity(8)
-                .feature(feature2)
-                .build());
-        userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .sprint(sprintList.get(0))
-                .subject("FE: T2 - Adapt form rules")
-                .feCapacity(13)
-                .feature(feature2)
-                .build());
-        userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .sprint(sprintList.get(0))
-                .subject("FE: T3 - Handle transition for Cancel action")
-                .feCapacity(3)
-                .feature(feature2)
-                .build());
-        userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .sprint(sprintList.get(0))
-
-                .subject("FE: T4 - Handle Save action")
-                .feCapacity(5)
-                .feature(feature2)
-                .build());
-        userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .sprint(sprintList.get(0))
-                .subject("BE: T4 - Async call for saving options")
-                .beCapacity(13)
-                .feature(feature2)
-                .build());
+//        userStoriesList.add(UserStory.builder()
+//                .id(id++)
+//                .sprint(sprintList.get(0))
+//                .subject("FE: T3 - Handle transition for Cancel action")
+//                .feCapacity(6)
+//                .feature(feature1)
+//                .build());
+//        userStoriesList.add(UserStory.builder()
+//                .id(id++)
+//                .sprint(sprintList.get(1))
+//
+//                .subject("FE: T4 - Handle Save action")
+//                .feCapacity(5)
+//                .feature(feature2)
+//                .build());
+//        userStoriesList.add(UserStory.builder()
+//                .id(id++)
+//                .sprint(sprintList.get(2))
+//                .subject("BE: T4 - Async call for saving options")
+//                .beCapacity(13)
+//                .feCapacity(4)
+//                .feature(feature2)
+//                .build());
 
         return new PiPlanning(null, sprintList, userStoriesList);
     }
@@ -154,9 +155,12 @@ public class TimeTableApp {
         List<Sprint> sprintList = piPlanning.getSprintList();
         List<UserStory> userStoryList = piPlanning.getUserStoryList();
 
-        for (UserStory us : userStoryList) {
-            LOGGER.info(us.getSubject() + " in " + userStoryList.get(0).getSprint().getName());
+        for (UserStory us : piPlanning.getUserStoryList()) {
+            LOGGER.info(us.getSubject() + " in " + us.getSprint().getName());
+        }
 
+        for (Sprint sprint : piPlanning.getSprintList()) {
+            LOGGER.info(sprint.getName() + " total fe capacity " + piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(UserStory::getFeCapacity).sum());
         }
     }
 }

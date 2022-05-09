@@ -14,33 +14,85 @@
  * limitations under the License.
  */
 
-package org.acme.schooltimetabling.solver;
+package org.acme.piplanning.solver;
 
-import org.acme.schooltimetabling.domain.PiPlanning;
-import org.acme.schooltimetabling.domain.UserStory;
+import org.acme.piplanning.domain.Feature;
+import org.acme.piplanning.domain.PiPlanning;
+import org.acme.piplanning.domain.Sprint;
+import org.acme.piplanning.domain.UserStory;
+import org.junit.jupiter.api.Test;
 import org.optaplanner.test.api.score.stream.ConstraintVerifier;
 
 class TimeTableConstraintProviderTest {
 
-//    private static final Sprint SPRINT_1 = new Sprint("Room1");
-//    private static final Sprint SPRINT_2 = new Sprint("Room2");
-//    private static final Slot TIMESLOT1 = new Slot(DayOfWeek.MONDAY, LocalTime.NOON);
-//    private static final Slot TIMESLOT2 = new Slot(DayOfWeek.TUESDAY, LocalTime.NOON);
-//    private static final Slot TIMESLOT3 = new Slot(DayOfWeek.TUESDAY, LocalTime.NOON.plusHours(1));
-//    private static final Slot TIMESLOT4 = new Slot(DayOfWeek.TUESDAY, LocalTime.NOON.plusHours(3));
+    private static final Feature feature1 = Feature.builder()
+            .id(1)
+            .subject("Plain Vanilla")
+            .build();
+    private static final Feature feature2 = Feature.builder()
+            .id(2)
+            .subject("Table View New/Change")
+            .build();
+
+    private static final Sprint sprint1 = Sprint.builder()
+            .name("Sprint_1")
+            .maxFeCapacity(10).build();
+    private static final Sprint sprint2 = Sprint.builder()
+            .name("Sprint_2")
+            .maxFeCapacity(10).build();
 
     ConstraintVerifier<TimeTableConstraintProvider, PiPlanning> constraintVerifier = ConstraintVerifier.build(
             new TimeTableConstraintProvider(), PiPlanning.class, UserStory.class);
 
-//    @Test
-//    void roomConflict() {
-//        UserStory firstUserStory = new UserStory(1, "Subject1", "Teacher1", "Group1", TIMESLOT1, SPRINT_1);
-//        UserStory conflictingUserStory = new UserStory(2, "Subject2", "Teacher2", "Group2", TIMESLOT1, SPRINT_1);
-//        UserStory nonConflictingLesson = new UserStory(3, "Subject3", "Teacher3", "Group3", TIMESLOT2, SPRINT_1);
-//        constraintVerifier.verifyThat(TimeTableConstraintProvider::roomConflict)
-//                .given(firstUserStory, conflictingUserStory, nonConflictingLesson)
-//                .penalizesBy(1);
-//    }
+    @Test
+    void sprintFEConflict() {
+
+        Feature feature1 = Feature.builder()
+                .subject("Plain Vanilla")
+                .build();
+        Feature feature2 = Feature.builder()
+                .subject("Table View New/Change")
+                .build();
+
+
+        UserStory firstUserStory = UserStory.builder()
+                .id(1)
+                .subject("FE: T1 - Reuse configuration form")
+                .sprint(sprint1)
+                .feCapacity(5)
+                .feature(feature1)
+                .build();
+
+        UserStory conflictingUserStory = UserStory.builder()
+                .id(2)
+                .subject("FE: T2- Reuse configuration form")
+                .sprint(sprint1)
+                .feCapacity(10)
+                .feature(feature1)
+                .build();
+
+        UserStory nonConflictingUserSTory = UserStory.builder()
+                .id(3)
+                .subject("FE: T3 - Reuse configuration form")
+                .sprint(sprint2)
+                .feCapacity(3)
+                .feature(feature2)
+                .build();
+        ;
+
+        UserStory US4 = UserStory.builder()
+                .id(4)
+                .subject("FE: T4 - Reuse configuration form")
+                .sprint(sprint2)
+                .feCapacity(8)
+                .feature(feature2)
+                .build();
+        ;
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::feStoryPointsConflictTotal)
+                .given(firstUserStory, conflictingUserStory, nonConflictingUserSTory, US4)
+                .penalizesBy(6);
+    }
 //
 //    @Test
 //    void teacherConflict() {

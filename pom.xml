@@ -78,7 +78,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${version.exec.plugin}</version>
                 <configuration>
-                    <mainClass>org.acme.schooltimetabling.TimeTableApp</mainClass>
+                    <mainClass>org.acme.piplanning.TimeTableApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

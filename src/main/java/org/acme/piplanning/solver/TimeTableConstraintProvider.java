@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.acme.schooltimetabling.solver;
+package org.acme.piplanning.solver;
 
-import org.acme.schooltimetabling.domain.UserStory;
+import org.acme.piplanning.domain.UserStory;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.score.stream.Constraint;
 import org.optaplanner.core.api.score.stream.ConstraintCollectors;
@@ -54,8 +54,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         Constraint a = constraintFactory.forEach(UserStory.class)
                 .groupBy(UserStory::getSprint, ConstraintCollectors.sum(UserStory::getFeCapacity))
                 .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity())
-                .penalize("FE story points conflict", HardSoftScore.ONE_HARD);
-
+                .penalize("FE story points conflict", HardSoftScore.ONE_HARD,
+                        (sprint, totalFECapacity) -> totalFECapacity - sprint.getMaxFeCapacity());
         return a;
     }
 

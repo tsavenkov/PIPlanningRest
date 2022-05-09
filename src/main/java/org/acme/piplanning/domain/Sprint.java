@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.acme.schooltimetabling.domain;
+package org.acme.piplanning.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

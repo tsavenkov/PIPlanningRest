@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.acme.schooltimetabling.domain;
+package org.acme.piplanning.domain;
 
 import lombok.*;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
@@ -27,10 +27,11 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 @Builder
 public class UserStory {
 
-    @PlanningId
+
     @Getter
     @Setter
-    private Long id;
+    @PlanningId
+    private int id;
 
     @Getter
     @Setter
@@ -54,16 +55,16 @@ public class UserStory {
 
 
     @PlanningVariable(valueRangeProviderRefs = "sprintRange")
-    public Sprint getSprint() {
-        return sprint;
-    }
-    public void setSprint(Sprint sprint) {
-        this.sprint = sprint;
-    }
-
     private Sprint sprint;
 
 
+    public Sprint getSprint() {
+        return sprint;
+    }
+
+    public void setSprint(Sprint sprint) {
+        this.sprint = sprint;
+    }
 
     @Override
     public String toString() {
