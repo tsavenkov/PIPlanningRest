@@ -24,6 +24,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class Sprint {
+    @Getter
+    @Setter
+    private int id;
 
     @Getter
     @Setter

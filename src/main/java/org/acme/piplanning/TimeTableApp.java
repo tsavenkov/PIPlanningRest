@@ -59,11 +59,13 @@ public class TimeTableApp {
 
         List<Sprint> sprintList = new ArrayList<>(3);
         sprintList.add(Sprint.builder()
+                .id(1)
                 .name("Sprint_1")
                 .maxSdCapacity(5)
                 .maxBeCapacity(17)
                 .maxFeCapacity(10).build());
         sprintList.add(Sprint.builder()
+                .id(2)
                 .name("Sprint_2")
                 .maxSdCapacity(7)
                 .maxBeCapacity(11)
@@ -80,10 +82,12 @@ public class TimeTableApp {
 
         Feature feature1 = Feature.builder()
                 .subject("Plain Vanilla")
+                .priority(1)
                 .build();
-//        Feature feature2 = Feature.builder()
-//                .subject("Table View New/Change")
-//                .build();
+        Feature feature2 = Feature.builder()
+                .priority(2)
+                .subject("Table View New/Change")
+                .build();
 
 
         userStoriesList.add(UserStory.builder()
@@ -108,20 +112,19 @@ public class TimeTableApp {
 //                .feature(feature1)
 //                .build());
 
-
         userStoriesList.add(UserStory.builder()
                 .id(id++)
                 .subject("FE3")
                 .sprint(sprintList.get(0))
-                .feCapacity(7)
-                .feature(feature1)
+                .feCapacity(4)
+                .feature(feature2)
                 .build());
         userStoriesList.add(UserStory.builder()
                 .id(id++)
                 .sprint(sprintList.get(0))
                 .subject("FE4")
-                .feCapacity(7)
-                .feature(feature1)
+                .feCapacity(4)
+                .feature(feature2)
                 .build());
 //        userStoriesList.add(UserStory.builder()
 //                .id(id++)

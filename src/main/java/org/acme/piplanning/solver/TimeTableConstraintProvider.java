@@ -18,10 +18,7 @@ package org.acme.piplanning.solver;
 
 import org.acme.piplanning.domain.UserStory;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
-import org.optaplanner.core.api.score.stream.Constraint;
-import org.optaplanner.core.api.score.stream.ConstraintCollectors;
-import org.optaplanner.core.api.score.stream.ConstraintFactory;
-import org.optaplanner.core.api.score.stream.ConstraintProvider;
+import org.optaplanner.core.api.score.stream.*;
 
 public class TimeTableConstraintProvider implements ConstraintProvider {
 
@@ -77,7 +74,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     }
 
 
-//    Constraint roomConflict(ConstraintFactory constraintFactory) {
+    //    Constraint roomConflict(ConstraintFactory constraintFactory) {
 //        // A room can accommodate at most one lesson at the same time.
 //        return constraintFactory
 //                // Select each pair of 2 different lessons ...
@@ -108,14 +105,14 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 //                .penalize("Student group conflict", HardSoftScore.ONE_HARD);
 //    }
 //
-//    Constraint teacherRoomStability(ConstraintFactory constraintFactory) {
-//        // A teacher prefers to teach in a single room.
-//        return constraintFactory
-//                .forEachUniquePair(UserStory.class,
-//                        Joiners.equal(UserStory::getTeacher))
-//                .filter((lesson1, lesson2) -> lesson1.getSprint() != lesson2.getSprint())
-//                .penalize("Teacher room stability", HardSoftScore.ONE_SOFT);
-//    }
+    Constraint featurePriority(ConstraintFactory constraintFactory) {
+        // the feature with the higher priority should go to the earlierst sprint
+        return constraintFactory
+                .forEach(UserStory.class)
+                .join(UserStory.class, Joiners.equal(UserStory::getFeature))
+                .filter((us1, us2) -> us1.getFeature().getPriority() < us2.getFeature().getPriority())
+                .penalize("Feature priority", HardSoftScore.ONE_SOFT);
+    }
 //
 //    Constraint teacherTimeEfficiency(ConstraintFactory constraintFactory) {
 //        // A teacher prefers to teach sequential lessons and dislikes gaps between lessons.
