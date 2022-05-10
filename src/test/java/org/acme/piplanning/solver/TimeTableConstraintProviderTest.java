@@ -25,19 +25,12 @@ import org.optaplanner.test.api.score.stream.ConstraintVerifier;
 
 class TimeTableConstraintProviderTest {
 
-    private static final Feature feature1 = Feature.builder()
-            .id(1)
-            .subject("Plain Vanilla")
-            .build();
-    private static final Feature feature2 = Feature.builder()
-            .id(2)
-            .subject("Table View New/Change")
-            .build();
-
     private static final Sprint sprint1 = Sprint.builder()
+            .id(1)
             .name("Sprint_1")
             .maxFeCapacity(10).build();
     private static final Sprint sprint2 = Sprint.builder()
+            .id(2)
             .name("Sprint_2")
             .maxFeCapacity(10).build();
 
@@ -53,7 +46,6 @@ class TimeTableConstraintProviderTest {
         Feature feature2 = Feature.builder()
                 .subject("Table View New/Change")
                 .build();
-
 
         UserStory firstUserStory = UserStory.builder()
                 .id(1)
@@ -78,7 +70,6 @@ class TimeTableConstraintProviderTest {
                 .feCapacity(3)
                 .feature(feature2)
                 .build();
-        ;
 
         UserStory US4 = UserStory.builder()
                 .id(4)
@@ -87,12 +78,93 @@ class TimeTableConstraintProviderTest {
                 .feCapacity(8)
                 .feature(feature2)
                 .build();
-        ;
 
         constraintVerifier.verifyThat(TimeTableConstraintProvider::feStoryPointsConflictTotal)
                 .given(firstUserStory, conflictingUserStory, nonConflictingUserSTory, US4)
                 .penalizesBy(6);
     }
+
+    @Test
+    void PriorityConflict() {
+        Feature feature1 = Feature.builder()
+                .subject("Feature with lowest priority")
+                .priority(1)
+                .build();
+        Feature feature2 = Feature.builder()
+                .subject("Feature with the highest priority")
+                .priority(2)
+                .build();
+
+
+        UserStory us1 = UserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint1)
+                .feCapacity(3)
+                .feature(feature1)
+                .build();
+
+        UserStory us2 = UserStory.builder()
+                .id(2)
+                .subject("us2")
+                .sprint(sprint1)
+                .feCapacity(4)
+                .feature(feature1)
+                .build();
+
+        UserStory us3 = UserStory.builder()
+                .id(3)
+                .subject("us3")
+                .sprint(sprint2)
+                .feCapacity(4)
+                .feature(feature2)
+                .build();
+
+        UserStory us4 = UserStory.builder()
+                .id(4)
+                .subject("us4")
+                .sprint(sprint2)
+                .feCapacity(4)
+                .feature(feature2)
+                .build();
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+                .given(us1, us2, us3, us4)
+                .penalizesBy(4);
+    }
+
+    @Test
+    void PriorityConflict2() {
+        Feature feature1 = Feature.builder()
+                .id(1)
+                .subject("Plain Vanilla")
+                .priority(3)
+                .build();
+        Feature feature2 = Feature.builder()
+                .id(2)
+                .subject("Table View New/Change")
+                .priority(1)
+                .build();
+
+        UserStory us1 = UserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint2)
+                .feature(feature1)
+                .build();
+        UserStory us2 = UserStory.builder()
+                .id(2)
+                .subject("us2")
+                .sprint(sprint1)
+                .feature(feature2)
+                .build();
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+                .given(us1, us2)
+                .penalizesBy(1);
+    }
+
+
 //
 //    @Test
 //    void teacherConflict() {

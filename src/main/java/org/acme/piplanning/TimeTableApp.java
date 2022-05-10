@@ -63,12 +63,31 @@ public class TimeTableApp {
         sprintList.add(Sprint.builder()
                 .id(1)
                 .name("Sprint_1")
-                .maxSdCapacity(5)
+                .maxSdCapacity(12)
                 .maxBeCapacity(17)
                 .maxFeCapacity(10).build());
         sprintList.add(Sprint.builder()
                 .id(2)
                 .name("Sprint_2")
+                .maxSdCapacity(12)
+                .maxBeCapacity(11)
+                .maxFeCapacity(10).build());
+        sprintList.add(Sprint.builder()
+                .id(3)
+                .name("Sprint_3")
+                .maxSdCapacity(12)
+                .maxBeCapacity(11)
+                .maxFeCapacity(10).build());
+        sprintList.add(Sprint.builder()
+                .id(4)
+                .name("Sprint_4")
+                .maxSdCapacity(7)
+                .maxBeCapacity(11)
+                .maxFeCapacity(10).build());
+
+        sprintList.add(Sprint.builder()
+                .id(5)
+                .name("Sprint_5")
                 .maxSdCapacity(7)
                 .maxBeCapacity(11)
                 .maxFeCapacity(10).build());
@@ -93,6 +112,8 @@ public class TimeTableApp {
                 .subject("US1")
                 .sprint(sprintList.get(0))
                 .feCapacity(3)
+                .beCapacity(4)
+                .sdCapacity(5)
                 .feature(featuresList.get(0))
                 .build());
         userStoriesList.add(UserStory.builder()
@@ -100,6 +121,8 @@ public class TimeTableApp {
                 .sprint(sprintList.get(0))
                 .subject("US2")
                 .feCapacity(4)
+                .beCapacity(4)
+                .sdCapacity(5)
                 .feature(featuresList.get(0))
                 .build());
         userStoriesList.add(UserStory.builder()
@@ -107,6 +130,8 @@ public class TimeTableApp {
                 .subject("US3")
                 .sprint(sprintList.get(0))
                 .feCapacity(4)
+                .beCapacity(4)
+                .sdCapacity(5)
                 .feature(featuresList.get(1))
                 .build());
         userStoriesList.add(UserStory.builder()
@@ -114,6 +139,8 @@ public class TimeTableApp {
                 .sprint(sprintList.get(0))
                 .subject("US4")
                 .feCapacity(4)
+                .beCapacity(4)
+                .sdCapacity(5)
                 .feature(featuresList.get(1))
                 .build());
     }
@@ -140,8 +167,13 @@ public class TimeTableApp {
             LOGGER.info(sprint.getName());
             LOGGER.info("");
             piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).forEach(us -> LOGGER.info(us.getSubject()));
-            LOGGER.info(sprint.getName() + " total fe capacity " + piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(UserStory::getFeCapacity).sum());
-            LOGGER.info("----------");
+            int usedFECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(UserStory::getFeCapacity).sum();
+            int usedBECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(UserStory::getBeCapacity).sum();
+            int usedSDCapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(UserStory::getSdCapacity).sum();
+            LOGGER.info(sprint.getName() + " total used fe capacity " + usedFECapacity + "; unused = " + (sprint.getMaxFeCapacity() - usedFECapacity));
+            LOGGER.info(sprint.getName() + " total used be capacity " + usedBECapacity + "; unused = " + (sprint.getMaxBeCapacity() - usedBECapacity));
+            LOGGER.info(sprint.getName() + " total used sd capacity " + usedSDCapacity + "; unused = " + (sprint.getMaxSdCapacity() - usedSDCapacity));
+            LOGGER.info("--------------------------------------------------");
         }
     }
 }
