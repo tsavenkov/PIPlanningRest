@@ -27,8 +27,10 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         return new Constraint[]{
                 //   Hard constraints
                 feStoryPointsConflictTotal(constraintFactory),
-                beStoryPointsConflictTotal(constraintFactory),
-                sdStoryPointsConflictTotal(constraintFactory)
+                featurePriority(constraintFactory)
+//                beStoryPointsConflictTotal(constraintFactory),
+//                sdStoryPointsConflictTotal(constraintFactory),
+                //
         };
 
 //        return new Constraint[]{
@@ -73,6 +75,17 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         return a;
     }
 
+    Constraint featurePriority(ConstraintFactory constraintFactory) {
+        // the feature with the higher priority should go to the earlierst sprint     . Penalty is 1 for each violation
+        return constraintFactory
+                .forEach(UserStory.class)
+                .join(UserStory.class, Joiners.lessThan(UserStory::getId))
+                .filter((us1, us2) -> (
+                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId()) ||
+                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId())))
+                .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
+    }
+
 
     //    Constraint roomConflict(ConstraintFactory constraintFactory) {
 //        // A room can accommodate at most one lesson at the same time.
@@ -105,14 +118,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 //                .penalize("Student group conflict", HardSoftScore.ONE_HARD);
 //    }
 //
-    Constraint featurePriority(ConstraintFactory constraintFactory) {
-        // the feature with the higher priority should go to the earlierst sprint
-        return constraintFactory
-                .forEach(UserStory.class)
-                .join(UserStory.class, Joiners.equal(UserStory::getFeature))
-                .filter((us1, us2) -> us1.getFeature().getPriority() < us2.getFeature().getPriority())
-                .penalize("Feature priority", HardSoftScore.ONE_SOFT);
-    }
+
 //
 //    Constraint teacherTimeEfficiency(ConstraintFactory constraintFactory) {
 //        // A teacher prefers to teach sequential lessons and dislikes gaps between lessons.

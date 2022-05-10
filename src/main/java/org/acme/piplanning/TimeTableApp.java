@@ -34,6 +34,9 @@ import java.util.List;
 public class TimeTableApp {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeTableApp.class);
+    private static final List<Sprint> sprintList = new ArrayList<>(2);
+    private static final List<UserStory> userStoriesList = new ArrayList<>();
+    private static final List<Feature> featuresList = new ArrayList<>();
 
     public static void main(String[] args) {
         SolverFactory<PiPlanning> solverFactory = SolverFactory.create(new SolverConfig()
@@ -55,9 +58,8 @@ public class TimeTableApp {
         printTimetable(solution);
     }
 
-    public static PiPlanning generateDemoData() {
 
-        List<Sprint> sprintList = new ArrayList<>(3);
+    private static void generateSprints() {
         sprintList.add(Sprint.builder()
                 .id(1)
                 .name("Sprint_1")
@@ -70,85 +72,56 @@ public class TimeTableApp {
                 .maxSdCapacity(7)
                 .maxBeCapacity(11)
                 .maxFeCapacity(10).build());
-//        sprintList.add(Sprint.builder()
-//                .name("Sprint_3")
-//                .maxSdCapacity(7)
-//                .maxBeCapacity(18)
-//                .maxFeCapacity(10).build());
+    }
 
-
-        List<UserStory> userStoriesList = new ArrayList<>();
-        int id = 0;
-
-        Feature feature1 = Feature.builder()
+    private static void generateFeatures() {
+        featuresList.add(Feature.builder()
+                .id(1)
                 .subject("Plain Vanilla")
+                .priority(3)
+                .build());
+        featuresList.add(Feature.builder()
+                .id(2)
                 .priority(1)
-                .build();
-        Feature feature2 = Feature.builder()
-                .priority(2)
                 .subject("Table View New/Change")
-                .build();
+                .build());
+    }
 
-
+    private static void generateUserStories() {
         userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .subject("FE1")
+                .id(1)
+                .subject("US1")
                 .sprint(sprintList.get(0))
-                .feCapacity(2)
-                .feature(feature1)
+                .feCapacity(3)
+                .feature(featuresList.get(0))
                 .build());
         userStoriesList.add(UserStory.builder()
-                .id(id++)
+                .id(2)
                 .sprint(sprintList.get(0))
-                .subject("FE2")
-                .feCapacity(2)
-                .feature(feature1)
+                .subject("US2")
+                .feCapacity(4)
+                .feature(featuresList.get(0))
                 .build());
-//        userStoriesList.add(UserStory.builder()
-//                .id(id++)
-//                .sprint(sprintList.get(0))
-//                .subject("SD: Renaming field")
-//                .feCapacity(3)
-//                .feature(feature1)
-//                .build());
-
         userStoriesList.add(UserStory.builder()
-                .id(id++)
-                .subject("FE3")
+                .id(3)
+                .subject("US3")
                 .sprint(sprintList.get(0))
                 .feCapacity(4)
-                .feature(feature2)
+                .feature(featuresList.get(1))
                 .build());
         userStoriesList.add(UserStory.builder()
-                .id(id++)
+                .id(4)
                 .sprint(sprintList.get(0))
-                .subject("FE4")
+                .subject("US4")
                 .feCapacity(4)
-                .feature(feature2)
+                .feature(featuresList.get(1))
                 .build());
-//        userStoriesList.add(UserStory.builder()
-//                .id(id++)
-//                .sprint(sprintList.get(0))
-//                .subject("FE: T3 - Handle transition for Cancel action")
-//                .feCapacity(6)
-//                .feature(feature1)
-//                .build());
-//        userStoriesList.add(UserStory.builder()
-//                .id(id++)
-//                .sprint(sprintList.get(1))
-//
-//                .subject("FE: T4 - Handle Save action")
-//                .feCapacity(5)
-//                .feature(feature2)
-//                .build());
-//        userStoriesList.add(UserStory.builder()
-//                .id(id++)
-//                .sprint(sprintList.get(2))
-//                .subject("BE: T4 - Async call for saving options")
-//                .beCapacity(13)
-//                .feCapacity(4)
-//                .feature(feature2)
-//                .build());
+    }
+
+    public static PiPlanning generateDemoData() {
+        generateSprints();
+        generateFeatures();
+        generateUserStories();
 
         return new PiPlanning(null, sprintList, userStoriesList);
     }
@@ -159,11 +132,16 @@ public class TimeTableApp {
         List<UserStory> userStoryList = piPlanning.getUserStoryList();
 
         for (UserStory us : piPlanning.getUserStoryList()) {
-            LOGGER.info(us.getSubject() + " in " + us.getSprint().getName());
+            LOGGER.info("Feature: " + us.getFeature().getSubject() + "  " + us.getSubject() + " in " + us.getSprint().getName());
         }
 
+
         for (Sprint sprint : piPlanning.getSprintList()) {
+            LOGGER.info(sprint.getName());
+            LOGGER.info("");
+            piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).forEach(us -> LOGGER.info(us.getSubject()));
             LOGGER.info(sprint.getName() + " total fe capacity " + piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(UserStory::getFeCapacity).sum());
+            LOGGER.info("----------");
         }
     }
 }
