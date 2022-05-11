@@ -1,11 +1,16 @@
 package com.service;
 
-import com.model.outputModel.OutputModel;
+import com.TimeTableApp;
+import com.domain.PiPlanning;
+import com.mapper.InputToProblem;
+import com.model.inputModel.Planning;
 
 @org.springframework.stereotype.Service
 public class Service {
 
-    public OutputModel solve() {
-        return OutputModel.builder().build();
+    public PiPlanning solve(Planning inputPlanning) {
+        PiPlanning piPlanning = InputToProblem.mapInputToProblem(inputPlanning);
+        
+        return TimeTableApp.solve(piPlanning);
     }
 }

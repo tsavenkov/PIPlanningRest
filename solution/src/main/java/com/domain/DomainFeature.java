@@ -5,7 +5,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Feature {
+public class DomainFeature {
     @Getter
     @Setter
     private int id;

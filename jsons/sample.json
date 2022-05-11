@@ -11,37 +11,37 @@
             "priority": 2
         }
     ],
-    "sprintsInput": [
+    "sprints": [
         {
             "id": 1,
             "name": "Sprint 1",
-            "maxFeCapacity": "10",
-            "maxBeCapacity": "10",
-            "maxSdCapacity": "10"
+            "maxFeCapacity": 10,
+            "maxBeCapacity": 10,
+            "maxSdCapacity": 10
         },
         {
             "id": 2,
             "name": "Sprint 2",
-            "maxFeCapacity": "10",
-            "maxBeCapacity": "10",
-            "maxSdCapacity": "10"
+            "maxFeCapacity": 10,
+            "maxBeCapacity": 10,
+            "maxSdCapacity": 10
         }
     ],
-    "userStoriesInput": [
+    "userStories": [
         {
             "id": 1,
             "subject": "User Story 1",
-            "feCapacity": "10",
-            "beCapacity": "0",
-            "sdCapacity": "0",
+            "feCapacity": 10,
+            "beCapacity": 0,
+            "sdCapacity": 0,
             "featureId": 1
         },
         {
             "id": 2,
             "subject": "User Story 2",
-            "feCapacity": "5",
-            "beCapacity": "0",
-            "sdCapacity": "0",
+            "feCapacity": 5,
+            "beCapacity": 0,
+            "sdCapacity": 0,
             "featureId": 1
         }
     ]

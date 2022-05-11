@@ -16,7 +16,7 @@
 
 package com.solver;
 
-import com.domain.UserStory;
+import com.domain.DomainUserStory;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.score.stream.*;
 
@@ -47,8 +47,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 
     Constraint feStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // fe story points for spring can not be more than total sprint fe capacity.
-        return constraintFactory.forEach(UserStory.class)
-                .groupBy(UserStory::getSprint, ConstraintCollectors.sum(UserStory::getFeCapacity))
+        return constraintFactory.forEach(DomainUserStory.class)
+                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getFeCapacity))
                 .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity())
                 .penalize("FE story points conflict", HardSoftScore.ONE_HARD,
                         (sprint, totalFECapacity) -> totalFECapacity - sprint.getMaxFeCapacity());
@@ -56,8 +56,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 
     Constraint beStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // fe story points for spring can not be more than total sprint fe capacity.
-        return constraintFactory.forEach(UserStory.class)
-                .groupBy(UserStory::getSprint, ConstraintCollectors.sum(UserStory::getBeCapacity))
+        return constraintFactory.forEach(DomainUserStory.class)
+                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBeCapacity))
                 .filter((sprint, totalBECapacity) -> totalBECapacity > sprint.getMaxBeCapacity())
                 .penalize("BE story points conflict", HardSoftScore.ONE_HARD,
                         (sprint, totalBECapacity) -> totalBECapacity - sprint.getMaxBeCapacity());
@@ -65,8 +65,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 
     Constraint sdStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // fe story points for spring can not be more than total sprint fe capacity.
-        return constraintFactory.forEach(UserStory.class)
-                .groupBy(UserStory::getSprint, ConstraintCollectors.sum(UserStory::getSdCapacity))
+        return constraintFactory.forEach(DomainUserStory.class)
+                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getSdCapacity))
                 .filter((sprint, totalSDCapacity) -> totalSDCapacity > sprint.getMaxSdCapacity())
                 .penalize("SD story points conflict", HardSoftScore.ONE_HARD,
                         (sprint, totalSDCapacity) -> totalSDCapacity - sprint.getMaxSdCapacity());
@@ -75,8 +75,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     Constraint featurePriority(ConstraintFactory constraintFactory) {
         // the feature with the higher priority should go to the earlierst sprint     . Penalty is 1 for each violation
         return constraintFactory
-                .forEach(UserStory.class)
-                .join(UserStory.class, Joiners.lessThan(UserStory::getId))
+                .forEach(DomainUserStory.class)
+                .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId))
                 .filter((us1, us2) -> (
                         (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId()) ||
                                 (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId())))

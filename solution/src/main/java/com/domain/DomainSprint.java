@@ -23,10 +23,10 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @Builder
-public class Sprint {
+public class DomainSprint {
     @Getter
     @Setter
-    private int id;
+    private long id;
 
     @Getter
     @Setter
@@ -39,14 +39,14 @@ public class Sprint {
 
     @Getter
     @Setter
-    private Integer maxFeCapacity;
+    private int maxFeCapacity;
 
     @Getter
     @Setter
-    private Integer maxBeCapacity;
+    private int maxBeCapacity;
 
     @Getter
     @Setter
-    private Integer maxSdCapacity;
+    private int maxSdCapacity;
 
 }

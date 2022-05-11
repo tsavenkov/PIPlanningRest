@@ -1,3 +1,4 @@
+
 package com.model.inputModel;
 
 import lombok.AllArgsConstructor;
@@ -9,10 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class InputModel {
-    private static final long serialVersionUID = 1L;
+public class Feature {
 
-    private long gameID;
-    private long tournamentId;
+
+    private Long id;
+    private Long priority;
+    private String subject;
+
+
 
 }

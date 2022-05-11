@@ -16,8 +16,7 @@
 
 package com.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
@@ -30,28 +29,33 @@ import java.util.List;
 @PlanningSolution
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PiPlanning {
 
     private HardSoftScore score;
-    private List<Sprint> sprintList;
-    private List<UserStory> userStoryList;
+    private List<DomainSprint> sprintList;
+
+    @Getter
+    @Setter
+    private List<DomainFeature> featureList;
+    private List<DomainUserStory> userStoryList;
 
     @ProblemFactCollectionProperty
     @ValueRangeProvider(id = "sprintRange")
-    public List<Sprint> getSprintList() {
+    public List<DomainSprint> getSprintList() {
         return sprintList;
     }
 
-    public void setSprintList(List<Sprint> sprintList) {
+    public void setSprintList(List<DomainSprint> sprintList) {
         this.sprintList = sprintList;
     }
 
     @PlanningEntityCollectionProperty
-    public List<UserStory> getUserStoryList() {
+    public List<DomainUserStory> getUserStoryList() {
         return userStoryList;
     }
 
-    public void setUserStoryList(List<UserStory> userStoryList) {
+    public void setUserStoryList(List<DomainUserStory> userStoryList) {
         this.userStoryList = userStoryList;
     }
 

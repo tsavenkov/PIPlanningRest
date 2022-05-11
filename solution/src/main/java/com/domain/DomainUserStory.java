@@ -25,7 +25,7 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 @NoArgsConstructor
 @PlanningEntity
 @Builder
-public class UserStory {
+public class DomainUserStory {
 
 
     @Getter
@@ -39,30 +39,30 @@ public class UserStory {
 
     @Getter
     @Setter
-    private Integer feCapacity;
+    private int feCapacity;
 
     @Getter
     @Setter
-    private Integer beCapacity;
+    private int beCapacity;
 
     @Getter
     @Setter
-    private Integer sdCapacity;
+    private int sdCapacity;
 
     @Getter
     @Setter
-    private Feature feature;
+    private DomainFeature feature;
 
 
     @PlanningVariable(valueRangeProviderRefs = "sprintRange")
-    private Sprint sprint;
+    private DomainSprint sprint;
 
 
-    public Sprint getSprint() {
+    public DomainSprint getSprint() {
         return sprint;
     }
 
-    public void setSprint(Sprint sprint) {
+    public void setSprint(DomainSprint sprint) {
         this.sprint = sprint;
     }
 
