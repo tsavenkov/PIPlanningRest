@@ -83,6 +83,16 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
     }
 
+    Constraint sprintCapacityUsage(ConstraintFactory constraintFactory) {
+        // this constraint makes sure that sprint can not contain unused capacity that covers some of the user stories which are in sprint 6
+        return constraintFactory
+                .forEach(DomainUserStory.class)
+                .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId))
+                .filter((us1, us2) -> (
+                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId()) ||
+                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId())))
+                .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
+    }
 
     //    Constraint roomConflict(ConstraintFactory constraintFactory) {
 //        // A room can accommodate at most one lesson at the same time.
