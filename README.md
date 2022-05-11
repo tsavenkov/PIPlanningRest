@@ -24,7 +24,9 @@ http://localhost:9090/bulkcreate
 
 http://localhost:9090/create
 
-### JSON data
+### JSON data. Model 1 contains the oen way how the sprints and user stories can be passed to the rest
+model2 is second option, a bit more simplified, should be more convenient during the PI planning
+
 ```
 {
 	"firstName": "Sumit",

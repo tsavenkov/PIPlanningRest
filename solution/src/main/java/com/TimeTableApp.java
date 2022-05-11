@@ -45,7 +45,7 @@ public class TimeTableApp {
                 .withConstraintProviderClass(TimeTableConstraintProvider.class)
                 // The solver runs only for 5 seconds on this small dataset.
                 // It's recommended to run for at least 5 minutes ("5m") otherwise.
-                .withTerminationSpentLimit(Duration.ofSeconds(10)));
+                .withTerminationSpentLimit(Duration.ofSeconds(50)));
 
 //        // Load the problem
 //        PiPlanning problem = generateDemoData();
@@ -54,6 +54,16 @@ public class TimeTableApp {
         Solver<PiPlanning> solver = solverFactory.buildSolver();
         PiPlanning solution = solver.solve(problem);
 
+        //calculate unused capacity for each sprint
+        for (DomainSprint sprint : solution.getSprintList()) {
+            int usedFECapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getFeCapacity).sum();
+            int usedBECapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getBeCapacity).sum();
+            int usedSDCapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getSdCapacity).sum();
+
+            sprint.setUnusedFECapacity(sprint.getMaxFeCapacity() - usedFECapacity);
+            sprint.setUnusedBECapacity(sprint.getMaxBeCapacity() -  usedBECapacity);
+            sprint.setUnusedSDCapacity(sprint.getMaxSdCapacity() - usedSDCapacity);
+        }
         // Visualize the solution
         printTimetable(solution);
         return solution;
@@ -167,12 +177,12 @@ public class TimeTableApp {
             LOGGER.info(sprint.getName());
             LOGGER.info("");
             piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).forEach(us -> LOGGER.info(us.getSubject()));
-            int usedFECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getFeCapacity).sum();
-            int usedBECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getBeCapacity).sum();
-            int usedSDCapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getSdCapacity).sum();
-            LOGGER.info(sprint.getName() + " total used fe capacity " + usedFECapacity + "; unused = " + (sprint.getMaxFeCapacity() - usedFECapacity));
-            LOGGER.info(sprint.getName() + " total used be capacity " + usedBECapacity + "; unused = " + (sprint.getMaxBeCapacity() - usedBECapacity));
-            LOGGER.info(sprint.getName() + " total used sd capacity " + usedSDCapacity + "; unused = " + (sprint.getMaxSdCapacity() - usedSDCapacity));
+//            int usedFECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getFeCapacity).sum();
+//            int usedBECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getBeCapacity).sum();
+//            int usedSDCapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getSdCapacity).sum();
+            LOGGER.info(sprint.getName() + " total FE unused = " + sprint.getUnusedFECapacity());
+            LOGGER.info(sprint.getName() + " total BE unused = " + sprint.getUnusedBECapacity());
+            LOGGER.info(sprint.getName() + " total SD unused = " + sprint.getUnusedSDCapacity());
             LOGGER.info("--------------------------------------------------");
         }
     }

@@ -1,0 +1,58 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 10,
+      "maxSdCapacity": 10
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 10,
+      "maxSdCapacity": 10
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "Plain Vanilla",
+      "priority": 1,
+      "userStories": [
+        {
+          "subject": "US1",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "US2",
+          "feCapacity": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "Table View New/Change",
+      "priority": 2,
+      "userStories": [
+        {
+          "subject": "US3",
+          "feCapacity": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "US4",
+          "feCapacity": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        }
+      ]
+    }
+  ]
+}

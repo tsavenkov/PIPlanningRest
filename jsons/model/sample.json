@@ -1,0 +1,58 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 10,
+      "maxSdCapacity": 10
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 10,
+      "maxSdCapacity": 10
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "Feature 1",
+      "priority": 1,
+      "userStories": [
+        {
+          "subject": "User Story 1",
+          "feCapacity": 10,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "User Story 2",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "Feature 2",
+      "priority": 2,
+      "userStories": [
+        {
+          "subject": "User Story 1",
+          "feCapacity": 10,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "User Story 2",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        }
+      ]
+    }
+  ]
+}

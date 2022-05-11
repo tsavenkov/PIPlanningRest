@@ -11,13 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class UserStory {
-
     private Long beCapacity;
     private Long feCapacity;
-    private Long featureId;
-    private Long id;
     private Long sdCapacity;
     private String subject;
-
-
 }

@@ -1,9 +1,9 @@
 package com.mapper;
 
 import com.domain.DomainFeature;
+import com.domain.DomainSprint;
 import com.domain.DomainUserStory;
 import com.domain.PiPlanning;
-import com.domain.DomainSprint;
 import com.model.inputModel.Feature;
 import com.model.inputModel.Planning;
 import com.model.inputModel.Sprint;
@@ -20,6 +20,8 @@ public class InputToProblem implements Serializable {
             List<DomainSprint> domainSprints = new ArrayList<>();
             List<DomainFeature> domainFeatures = new ArrayList<>();
             List<DomainUserStory> domainUserStories = new ArrayList<>();
+
+
             for (Sprint a : inputModel.getSprints())
                 domainSprints.add(DomainSprint.builder()
                         .id(a.getId())
@@ -29,22 +31,25 @@ public class InputToProblem implements Serializable {
                         .name(a.getName())
                         .build());
 
-            for (Feature a : inputModel.getFeatures())
-                domainFeatures.add(DomainFeature.builder()
-                        .id(a.getId().intValue())
-                        .priority(a.getPriority().intValue())
-                        .subject(a.getSubject())
-                        .build());
+            int id = 0;
+            for (Feature feature : inputModel.getFeatures()) {
+                DomainFeature domainFeature = DomainFeature.builder()
+                        .id(feature.getId().intValue())
+                        .priority(feature.getPriority().intValue())
+                        .subject(feature.getSubject())
+                        .build();
+                domainFeatures.add(domainFeature);
 
-            for (UserStory a : inputModel.getUserStories())
-                domainUserStories.add(DomainUserStory.builder()
-                                .id(a.getId().intValue())
-                                .beCapacity(a.getBeCapacity().intValue())
-                                .feature(domainFeatures.stream().filter(b -> a.getFeatureId() == b.getId()).findFirst().get())
-                                .feCapacity(a.getFeCapacity().intValue())
-                                .subject(a.getSubject())
-                                .sdCapacity(a.getSdCapacity().intValue())
-                        .build());
+                for (UserStory b : feature.getUserStories())
+                    domainUserStories.add(DomainUserStory.builder()
+                            .id(id++)
+                            .beCapacity(b.getBeCapacity().intValue())
+                            .feature(domainFeature)
+                            .feCapacity(b.getFeCapacity().intValue())
+                            .subject(b.getSubject())
+                            .sdCapacity(b.getSdCapacity().intValue())
+                            .build());
+            }
             piPlanning.setFeatureList(domainFeatures);
             piPlanning.setSprintList(domainSprints);
             piPlanning.setUserStoryList(domainUserStories);

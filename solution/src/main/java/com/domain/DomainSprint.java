@@ -49,4 +49,14 @@ public class DomainSprint {
     @Setter
     private int maxSdCapacity;
 
+    @Getter
+    @Setter
+    private int unusedFECapacity;
+    @Getter
+    @Setter
+    private int unusedBECapacity;
+    @Getter
+    @Setter
+    private int unusedSDCapacity;
+
 }
