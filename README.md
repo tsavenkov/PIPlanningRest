@@ -1,58 +1,24 @@
 
 # Overview
-In this project, We will show how Spring boot and spring data jpa can be used to integrate with postgresql.
+In this project, we use distributed planning optimization for SAFe based pi plannings with 5 sprints.
+Sprint 6 represents out of scope user stories which by constraints can't be placed in Sprints 1-6
 
 
-## Step 1 Download the code from github
-```git clone https://github.com/RajeshBhojwani/springboot-postgresql.git```
+## Step 1 Download project from GitHub, import to Itellij IDEA and run it as a SpringBoot application
 
-## Step 2 Build the project
-```gradlew clean build```
-
-## Step 3 Launch the application
-```java -jar java -jar build/libs/springposgres-0.0.1-SNAPSHOT.jar```
-
-## Step 4  Use Curl or Postman to test the REST apis created. 
+## Step 3  Use Curl or Postman to test the REST apis created.    Use the example JSON files to trigger the solution solving
 
 
-## APIs for Postgresql usage
-1. Bulk upload of the customers using below api. No need to pass any data.
+## APIs
+POST call to solve the solution. JSON which represends features, user stories and sprints should be passed in a body
 
-http://localhost:9090/bulkcreate
-
-2. POST call to insert one customer based on the JSON data passed.
-
-http://localhost:9090/create
+http://localhost:9090/solve
 
 ### JSON data. Model 1 contains the oen way how the sprints and user stories can be passed to the rest
 model2 is second option, a bit more simplified, should be more convenient during the PI planning
 
-```
-{
-	"firstName": "Sumit",
-	"lastName": "Khan"
-}
-```
 
-2. GET call to retrive all customers.
-
-http://localhost:9090/findall
-
-3. GET call to search customer by id.
-http://localhost:9090/search/{id}
-
-4. GET call to search customer by first name.
-http://localhost:9090/searchbyfirstname/{firstname}
-
-
-
-For detail explanation of this project check this blog -https://www.rajeshbhojwani.co.in/2019/01/spring-boot-and-postgresql.html
-compile everything 
-./gradlew build
-
-build after compilation 
-
-./gradlew build
+## Docker commands to run it as a container
 docker build -t 23123411222/logistico:volley_be8 .
 docker push 23123411222/logistico:volley_be8
 docker run -it -p 9090:9090 --rm --name docker_volley_be 23123411222/logistico:volley_be
