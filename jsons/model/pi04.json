@@ -34,7 +34,14 @@
       "maxFeCapacity": 5,
       "maxBeCapacity": 7,
       "maxSdCapacity": 4
-    }
+    },
+        {
+          "id": 6,
+          "name": "Out of scope",
+          "maxFeCapacity": 1000,
+          "maxBeCapacity": 1000,
+          "maxSdCapacity": 1000
+        }
   ],
   "features": [
     {

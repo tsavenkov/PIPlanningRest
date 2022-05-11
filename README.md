@@ -10,9 +10,11 @@ Sprint 6 represents out of scope user stories which by constraints can't be plac
 
 
 ## APIs
-POST call to solve the solution. JSON which represends features, user stories and sprints should be passed in a body
+POST call to solve the solution. JSON which represents features, user stories and sprints should be passed in a body
 
 http://localhost:9090/solve
+
+http://localhost:9090/solveWithTransform  - transforms output to a Sprint/user stories distribution
 
 ### JSON data. Model 1 contains the oen way how the sprints and user stories can be passed to the rest
 model2 is second option, a bit more simplified, should be more convenient during the PI planning
