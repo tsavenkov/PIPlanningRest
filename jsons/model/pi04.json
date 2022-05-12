@@ -204,48 +204,7 @@
           "sdCapacity": 3
         }
       ]
-    },
-    {
-      "id": 6,
-      "subject": "MSD - Remove ECA Asia and ECA USA from Screen Pricing. They are new only on Company Module, Candidate Pricing, with MRC & OTC = Offer",
-      "priority": 4,
-      "userStories": [
-        {
-          "subject": "SD: T1 - Modify the value for the flag",
-          "feCapacity": 0,
-          "beCapacity": 0,
-          "sdCapacity": 1
-        },
-        {
-          "subject": "BE: T1 - Check existing logic on document",
-          "feCapacity": 0,
-          "beCapacity": 1,
-          "sdCapacity": 0
-        },
-        {
-          "subject": "FE: T2 - Add ECA label to Prices Modal",
-          "feCapacity": 5,
-          "beCapacity": 0,
-          "sdCapacity": 0
-        },
-        {
-          "subject": "BE: T2 - Grouping and Save logic",
-          "feCapacity": 0,
-          "beCapacity": 21,
-          "sdCapacity": 0
-        },
-        {
-          "subject": "SD: T2 - Make sure that all operations works with new logic ",
-          "feCapacity": 0,
-          "beCapacity": 0,
-          "sdCapacity": 3
-        },
-        {
-          "subject": "SD: T2 - Add extra field for option configuration",
-          "feCapacity": 0,
-          "beCapacity": 0,
-          "sdCapacity": 3
-        }
+    }
       ]
     }
   ]

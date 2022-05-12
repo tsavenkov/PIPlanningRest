@@ -75,12 +75,14 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 
     public Constraint featurePriority(ConstraintFactory constraintFactory) {
         // the feature with the higher priority should go to the earlierst sprint     . Penalty is 1 for each violation
+        // we exclude from viaolation the case when feature is in Sprint 6 - it means its out of scope (because of hard constraints) and thats why we dont penalise that for ex. us with lower prio is in sprint 5 and
+        // user story with higher prio is in sprint 6
         return constraintFactory
                 .forEach(DomainUserStory.class)
                 .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId))
                 .filter((us1, us2) -> (
-                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId()) ||
-                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId())))
+                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6) ||
+                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6)))
                 .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
     }
 

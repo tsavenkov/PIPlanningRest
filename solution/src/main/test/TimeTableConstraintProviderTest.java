@@ -91,7 +91,7 @@ class TimeTableConstraintProviderTest {
     }
 
     @Test
-    void PriorityConflict() {
+    void PriorityConflictWith4Penalty() {
         DomainFeature feature1 = DomainFeature.builder()
                 .subject("DomainFeature with lowest priority")
                 .priority(1)
@@ -140,7 +140,7 @@ class TimeTableConstraintProviderTest {
     }
 
     @Test
-    void PriorityConflict2() {
+    void PriorityConflictWith1Penalty() {
         DomainFeature feature1 = DomainFeature.builder()
                 .id(1)
                 .subject("Plain Vanilla")
@@ -169,6 +169,39 @@ class TimeTableConstraintProviderTest {
                 .given(us1, us2)
                 .penalizesBy(1);
     }
+
+    @Test
+        void PriorityConflictWithNoPenaltyIfUserStoryInSprint6() {
+        //this tests the scenario that if one user story is out of scope - then we dont add extra penalty for the user story combination. Only 1 soft penalty will be there for out of scope, not fitting to the
+        // PIPlanning.
+            DomainFeature feature1 = DomainFeature.builder()
+                    .id(1)
+                    .subject("Plain Vanilla")
+                    .priority(3)
+                    .build();
+            DomainFeature feature2 = DomainFeature.builder()
+                    .id(2)
+                    .subject("Table View New/Change")
+                    .priority(1)
+                    .build();
+
+            DomainUserStory us1 = DomainUserStory.builder()
+                    .id(1)
+                    .subject("us1")
+                    .sprint(sprint2)
+                    .feature(feature1)
+                    .build();
+            DomainUserStory us2 = DomainUserStory.builder()
+                    .id(2)
+                    .subject("us2")
+                    .sprint(sprint6)
+                    .feature(feature2)
+                    .build();
+
+            constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+                    .given(us1, us2)
+                    .penalizesBy(0);
+        }
 
     @Test
     void outOfScopeConflict() {
