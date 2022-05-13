@@ -48,6 +48,7 @@ public class InputToProblem implements Serializable {
                             .feCapacity(b.getFeCapacity().intValue())
                             .subject(b.getSubject())
                             .sdCapacity(b.getSdCapacity().intValue())
+                            .fixedSprint(b.getFixedSprint() == null ? 0 : b.getFixedSprint())
                             .build());
             }
             piPlanning.setFeatureList(domainFeatures);

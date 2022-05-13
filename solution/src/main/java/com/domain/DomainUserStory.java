@@ -53,6 +53,10 @@ public class DomainUserStory {
     @Setter
     private DomainFeature feature;
 
+    @Getter
+    @Setter
+    private long fixedSprint;
+
 
     @PlanningVariable(valueRangeProviderRefs = "sprintRange")
     private DomainSprint sprint;

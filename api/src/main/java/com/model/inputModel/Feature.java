@@ -18,4 +18,5 @@ public class Feature {
     private Long priority;
     private String subject;
     private List<UserStory> userStories;
+
 }

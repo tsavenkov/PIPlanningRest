@@ -21,15 +21,17 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.api.score.stream.*;
 
 public class TimeTableConstraintProvider implements ConstraintProvider {
+    int delta = 2;
 
     @Override
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[]{
                 //   Hard constraints
                 feStoryPointsConflictTotal(constraintFactory),
-                featurePriority(constraintFactory),
+                fixedSprint(constraintFactory),
                 beStoryPointsConflictTotal(constraintFactory),
                 sdStoryPointsConflictTotal(constraintFactory),
+                featurePriority(constraintFactory),
                 sprintCapacityUsage(constraintFactory)
                 //
         };
@@ -50,7 +52,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // fe story points for spring can not be more than total sprint fe capacity.
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getFeCapacity))
-                .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity())
+                .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity() + delta)
                 .penalize("FE story points conflict", HardSoftScore.ONE_HARD,
                         (sprint, totalFECapacity) -> totalFECapacity - sprint.getMaxFeCapacity());
     }
@@ -59,7 +61,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // fe story points for spring can not be more than total sprint fe capacity.
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBeCapacity))
-                .filter((sprint, totalBECapacity) -> totalBECapacity > sprint.getMaxBeCapacity())
+                .filter((sprint, totalBECapacity) -> totalBECapacity > sprint.getMaxBeCapacity() + delta)
                 .penalize("BE story points conflict", HardSoftScore.ONE_HARD,
                         (sprint, totalBECapacity) -> totalBECapacity - sprint.getMaxBeCapacity());
     }
@@ -68,7 +70,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // fe story points for spring can not be more than total sprint fe capacity.
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getSdCapacity))
-                .filter((sprint, totalSDCapacity) -> totalSDCapacity > sprint.getMaxSdCapacity())
+                .filter((sprint, totalSDCapacity) -> totalSDCapacity > sprint.getMaxSdCapacity() + delta)
                 .penalize("SD story points conflict", HardSoftScore.ONE_HARD,
                         (sprint, totalSDCapacity) -> totalSDCapacity - sprint.getMaxSdCapacity());
     }
@@ -77,12 +79,14 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // the feature with the higher priority should go to the earlierst sprint     . Penalty is 1 for each violation
         // we exclude from viaolation the case when feature is in Sprint 6 - it means its out of scope (because of hard constraints) and thats why we dont penalise that for ex. us with lower prio is in sprint 5 and
         // user story with higher prio is in sprint 6
+
+        // this should also not include the feature with the fixed sprint
         return constraintFactory
                 .forEach(DomainUserStory.class)
                 .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId))
                 .filter((us1, us2) -> (
-                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6) ||
-                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6)))
+                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6 && us2.getFixedSprint()==0) ||
+                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6) && us1.getFixedSprint()==0))
                 .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
     }
 
@@ -91,9 +95,19 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // we do trick here: we penalize every user story which is in  out of scope sprint 6 with the soft penalty. This automatically place  user story to the earlier sprint if it fits to the capacity hard constraint
         return constraintFactory
                 .forEach(DomainUserStory.class)
-                .join(DomainUserStory.class, Joiners.equal(DomainUserStory::getId))
-                .filter((us1, us2) -> (us1.getSprint().getId() == 6))
-                .penalize("Out of scope: user story placed to sprint 6", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
+                .filter((us1) -> (us1.getSprint().getId() == 6))
+                .penalize("Out of scope: user story placed to sprint 6", HardSoftScore.ONE_SOFT, us1 -> 1);
+    }
+
+    public Constraint fixedSprint(ConstraintFactory constraintFactory) {
+        // if sprint is fixed for specific user story then we place it there with the hard constraint
+        return constraintFactory
+                .forEach(DomainUserStory.class).filter(domainUserStory -> (domainUserStory.getFixedSprint() != domainUserStory.getSprint().getId()) && domainUserStory.getFixedSprint() != 0)
+                .penalize("Fixed sprint constraint violated", HardSoftScore.ONE_HARD, domainUserStory -> 1);
+
+//                    .join(DomainUserStory.class, Joiners.equal(DomainUserStory::getId))
+//                    .filter((us1, us2) -> (us1.getSprint().getId() == us1.getFixedSprint().longValue()) && us1.getFixedSprint()!=0)
+//                    .penalize("Fixed sprint constraint violated", HardSoftScore.ONE_HARD, (us1, us2) -> 1);
     }
 
     //    Constraint roomConflict(ConstraintFactory constraintFactory) {

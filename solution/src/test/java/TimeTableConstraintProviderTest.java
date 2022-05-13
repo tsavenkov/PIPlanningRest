@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-package org.acme.piplanning.solver;
-
 
 import com.domain.DomainFeature;
 import com.domain.DomainSprint;
@@ -87,7 +85,7 @@ class TimeTableConstraintProviderTest {
 
         constraintVerifier.verifyThat(TimeTableConstraintProvider::feStoryPointsConflictTotal)
                 .given(firstUserStory, conflictingUserStory, nonConflictingUserSTory, US4)
-                .penalizesBy(6);
+                .penalizesBy(5);         //with delta 2
     }
 
     @Test
@@ -171,37 +169,70 @@ class TimeTableConstraintProviderTest {
     }
 
     @Test
-        void PriorityConflictWithNoPenaltyIfUserStoryInSprint6() {
+    void PriorityConflictWhenFixedSprint() {
+        //if there is a fixed sprint for one user story then we don't punish with the priority feature
+        DomainFeature feature1 = DomainFeature.builder()
+                .id(1)
+                .subject("Plain Vanilla")
+                .priority(1)
+                .build();
+        DomainFeature feature2 = DomainFeature.builder()
+                .id(2)
+                .subject("Table View New/Change")
+                .priority(2)
+                .build();
+
+        DomainUserStory us1 = DomainUserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint2)
+                .fixedSprint(2)
+                .feature(feature1)
+                .build();
+        DomainUserStory us2 = DomainUserStory.builder()
+                .id(2)
+                .subject("us2")
+                .sprint(sprint1)
+                .feature(feature2)
+                .build();
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+                .given(us1, us2)
+                .penalizesBy(0);
+    }
+
+    @Test
+    void PriorityConflictWithNoPenaltyIfUserStoryInSprint6() {
         //this tests the scenario that if one user story is out of scope - then we dont add extra penalty for the user story combination. Only 1 soft penalty will be there for out of scope, not fitting to the
         // PIPlanning.
-            DomainFeature feature1 = DomainFeature.builder()
-                    .id(1)
-                    .subject("Plain Vanilla")
-                    .priority(3)
-                    .build();
-            DomainFeature feature2 = DomainFeature.builder()
-                    .id(2)
-                    .subject("Table View New/Change")
-                    .priority(1)
-                    .build();
+        DomainFeature feature1 = DomainFeature.builder()
+                .id(1)
+                .subject("Plain Vanilla")
+                .priority(3)
+                .build();
+        DomainFeature feature2 = DomainFeature.builder()
+                .id(2)
+                .subject("Table View New/Change")
+                .priority(1)
+                .build();
 
-            DomainUserStory us1 = DomainUserStory.builder()
-                    .id(1)
-                    .subject("us1")
-                    .sprint(sprint2)
-                    .feature(feature1)
-                    .build();
-            DomainUserStory us2 = DomainUserStory.builder()
-                    .id(2)
-                    .subject("us2")
-                    .sprint(sprint6)
-                    .feature(feature2)
-                    .build();
+        DomainUserStory us1 = DomainUserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint2)
+                .feature(feature1)
+                .build();
+        DomainUserStory us2 = DomainUserStory.builder()
+                .id(2)
+                .subject("us2")
+                .sprint(sprint6)
+                .feature(feature2)
+                .build();
 
-            constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
-                    .given(us1, us2)
-                    .penalizesBy(0);
-        }
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+                .given(us1, us2)
+                .penalizesBy(0);
+    }
 
     @Test
     void outOfScopeConflict() {
@@ -266,6 +297,72 @@ class TimeTableConstraintProviderTest {
                 .given(us1, us2, us3)
                 .penalizesBy(0);
     }
+
+
+    @Test
+    void fixedSprintWrongConflict() {
+        DomainFeature feature1 = DomainFeature.builder()
+                .id(1)
+                .subject("Plain Vanilla")
+                .priority(1)
+                .build();
+
+        DomainUserStory us1 = DomainUserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint6)
+                .fixedSprint(4)
+                .feature(feature1)
+                .build();
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::fixedSprint)
+                .given(us1)
+                .penalizesBy(1);
+    }
+
+    @Test
+    void fixedSprintEqual0OK() {
+        DomainFeature feature1 = DomainFeature.builder()
+                .id(1)
+                .subject("Plain Vanilla")
+                .priority(1)
+                .build();
+
+        DomainUserStory us1 = DomainUserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint1)
+                .fixedSprint(0)
+                .feature(feature1)
+                .build();
+
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::fixedSprint)
+                .given(us1)
+                .penalizesBy(0);
+    }
+
+    @Test
+    void fixedSprintEqualOK() {
+        DomainFeature feature1 = DomainFeature.builder()
+                .id(1)
+                .subject("Plain Vanilla")
+                .priority(1)
+                .build();
+
+        DomainUserStory us1 = DomainUserStory.builder()
+                .id(1)
+                .subject("us1")
+                .sprint(sprint1)
+                .fixedSprint(1)
+                .feature(feature1)
+                .build();
+
+
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::fixedSprint)
+                .given(us1)
+                .penalizesBy(0);
+    }
 //
 //    @Test
 //    void teacherConflict() {
@@ -325,6 +422,39 @@ class TimeTableConstraintProviderTest {
 //                .given(mondayLesson, firstTuesdayUserStory, secondTuesdayLesson, thirdTuesdayLessonWithDifferentSubject,
 //                        lessonInAnotherGroup)
 //                .penalizesBy(1); // Second tuesday lesson immediately follows the first.
+//    }
+
+
+//    ///all constraints tests
+//    @Test
+//    public void givenFactsMultipleConstraints() {
+//        DomainFeature feature1 = DomainFeature.builder()
+//                .id(1)
+//                .subject("Plain Vanilla")
+//                .priority(1)
+//                .build();
+//        DomainFeature feature2 = DomainFeature.builder()
+//                .id(2)
+//                .subject("Table View New/Change")
+//                .priority(2)
+//                .build();
+//
+//        DomainUserStory us1 = DomainUserStory.builder()
+//                .id(1)
+//                .subject("us1")
+//                .sprint(sprint2)
+//                .fixedSprint(2)
+//                .feature(feature1)
+//                .build();
+//        DomainUserStory us2 = DomainUserStory.builder()
+//                .id(2)
+//                .subject("us2")
+//                .sprint(sprint1)
+//                .feature(feature2)
+//                .build();
+//        constraintVerifier.verifyThat()
+//                .given(us1, us2)
+//                .scores(SimpleScore.of(-3));
 //    }
 
 }

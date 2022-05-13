@@ -31,22 +31,22 @@
     {
       "id": 5,
       "name": "Sprint 5",
-      "maxFeCapacity": 5,
-      "maxBeCapacity": 7,
-      "maxSdCapacity": 4
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "maxSdCapacity": 0
     },
-        {
-          "id": 6,
-          "name": "Out of scope",
-          "maxFeCapacity": 1000,
-          "maxBeCapacity": 1000,
-          "maxSdCapacity": 1000
-        }
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000
+    }
   ],
   "features": [
     {
       "id": 1,
-      "subject": "FM-MSD, Step1of4: Plain vanilla - Create Offer from FM Task or Oppurtunity (based on Tapas-MSD interface) ",
+      "subject": "FM-MSD, Step1of4: Plain vanilla - Create Offer from FM Task or Opportunity (based on Tapas-MSD interface) ",
       "priority": 10,
       "userStories": [
         {
@@ -202,6 +202,34 @@
           "feCapacity": 0,
           "beCapacity": 0,
           "sdCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subject": "Catalog changes",
+      "priority": 11,
+      "userStories": [
+        {
+          "subject": "SD: Catalog Change",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3
+        },
+        {
+          "subject": "BE: Catalog Change",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 4,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: Catalog Change",
+          "fixedSprint": 4,
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0
         }
       ]
     }
