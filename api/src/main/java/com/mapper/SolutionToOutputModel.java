@@ -37,6 +37,38 @@ public class SolutionToOutputModel implements Serializable {
             }
             outputModel.setOutputSprintList(outputSprintList);
         }
+
+        outputModel.setTotalUnusedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        outputModel.setTotalUnusedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        outputModel.setTotalUnusedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+
+        outputModel.setTotalUndistributedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxFeCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        outputModel.setTotalUndistributedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxBeCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        outputModel.setTotalUndistributedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxSdCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+
+        outputModel.setScore(solution.getScore());
+
+        //set partially planned features
+        outputModel.setPartiallyPlannedFeatures(solution.getFeatureList().stream().filter(domainFeature ->
+                solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() == 6 && domainFeature.getId() == domainUserStory.getFeature().getId())
+                        &&
+                        solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() != 6 && domainFeature.getId() == domainUserStory.getFeature().getId())
+
+        ).collect(Collectors.toList()));
+
+//        //set partially planned features
+//        ArrayList<DomainFeature> partiallyPlanned = new ArrayList<>();
+//
+//        for (DomainFeature domainFeature : solution.getFeatureList()) {
+//            if (solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() == 6 && domainFeature.getId() == domainUserStory.getFeature().getId()) &&
+//                    solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() != 6 && domainFeature.getId() == domainUserStory.getFeature().getId()))
+//                partiallyPlanned.add(domainFeature);
+//
+//        }
+//        outputModel.setPartiallyPlannedFeatures(partiallyPlanned);
         return outputModel;
     }
 }

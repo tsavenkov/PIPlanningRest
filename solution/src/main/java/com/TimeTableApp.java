@@ -45,7 +45,7 @@ public class TimeTableApp {
                 .withConstraintProviderClass(TimeTableConstraintProvider.class)
                 // The solver runs only for 5 seconds on this small dataset.
                 // It's recommended to run for at least 5 minutes ("5m") otherwise.
-                .withTerminationSpentLimit(Duration.ofSeconds(30)));
+                .withTerminationSpentLimit(Duration.ofSeconds(10)));
 
 //        // Load the problem
 //        PiPlanning problem = generateDemoData();
@@ -168,13 +168,13 @@ public class TimeTableApp {
         LOGGER.info("--------------------------------------------------");
         List<DomainSprint> sprintList = piPlanning.getSprintList();
         List<DomainUserStory> userStoryList = piPlanning.getUserStoryList();
-
-//        for (DomainUserStory us : piPlanning.getUserStoryList()) {
-//            LOGGER.info("Feature: " + us.getFeature().getSubject() + "  " + us.getSubject() + " in " + us.getSprint().getName());
-//        }
-
+        LOGGER.info(" TOTAL FE unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        LOGGER.info(" TOTAL BE unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        LOGGER.info(" TOTAL SD unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
 
         for (DomainSprint sprint : piPlanning.getSprintList()) {
+
+            LOGGER.info(" --------------------------------------------------");
             LOGGER.info(sprint.getName());
             LOGGER.info(" FE unused = " + sprint.getUnusedFECapacity());
             LOGGER.info(" BE unused = " + sprint.getUnusedBECapacity());
