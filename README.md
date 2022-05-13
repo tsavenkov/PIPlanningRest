@@ -19,10 +19,11 @@ http://localhost:9090/solveWithTransform  - transforms output to a Sprint/user s
 ### JSON data. Model 1 contains the oen way how the sprints and user stories can be passed to the rest
 model2 is second option, a bit more simplified, should be more convenient during the PI planning
 
+              
 
 ## Docker commands to run it as a container
-docker build -t 23123411222/logistico:volley_be8 .
-docker push 23123411222/logistico:volley_be8
-docker run -it -p 9090:9090 --rm --name docker_volley_be 23123411222/logistico:volley_be
+mvn clean install
+docker build  -t  23123411222/solver:piplanning .
+docker run -it -p 9090:9090 --rm --name piplanning 23123411222/solver:piplanning
 
 

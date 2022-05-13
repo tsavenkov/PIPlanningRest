@@ -14,7 +14,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <!--        <maven.compiler.release>11</maven.compiler.release>-->
+<!--        <maven.compiler.release>11</maven.compiler.release>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <version.org.optaplanner>8.19.0.Final</version.org.optaplanner>
@@ -90,19 +90,23 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.compiler.plugin}</version>
+                <configuration>
+                    <!--                    <source>11</source>-->
+                    <!--                    <target>11</target>-->
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${version.surefire.plugin}</version>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.codehaus.mojo</groupId>-->
-            <!--                <artifactId>exec-maven-plugin</artifactId>-->
-            <!--                <version>${version.exec.plugin}</version>-->
-            <!--                <configuration>-->
-            <!--                    <mainClass>TimRable</mainClass>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${version.exec.plugin}</version>
+                <configuration>
+                    <mainClass>com.TimeTableApp</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
