@@ -41,15 +41,16 @@ public class InputToProblem implements Serializable {
                 domainFeatures.add(domainFeature);
 
                 for (UserStory b : feature.getUserStories())
-                    domainUserStories.add(DomainUserStory.builder()
-                            .id(id++)
-                            .beCapacity(b.getBeCapacity().intValue())
-                            .feature(domainFeature)
-                            .feCapacity(b.getFeCapacity().intValue())
-                            .subject(b.getSubject())
-                            .sdCapacity(b.getSdCapacity().intValue())
-                            .fixedSprint(b.getFixedSprint() == null ? 0 : b.getFixedSprint())
-                            .build());
+                    if (b != null)
+                        domainUserStories.add(DomainUserStory.builder()
+                                .id(id++)
+                                .beCapacity(b.getBeCapacity().intValue())
+                                .feature(domainFeature)
+                                .feCapacity(b.getFeCapacity().intValue())
+                                .subject(b.getSubject())
+                                .sdCapacity(b.getSdCapacity().intValue())
+                                .fixedSprint(b.getFixedSprint() == null ? 0 : b.getFixedSprint())
+                                .build());
             }
             piPlanning.setFeatureList(domainFeatures);
             piPlanning.setSprintList(domainSprints);

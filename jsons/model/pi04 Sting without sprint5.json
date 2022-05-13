@@ -1,0 +1,329 @@
+{
+    "sprints": [
+      {
+        "id": 1,
+        "name": "Sprint 1",
+        "maxFeCapacity": 13,
+        "maxBeCapacity": 15,
+        "maxSdCapacity": 9
+      },
+      {
+        "id": 2,
+        "name": "Sprint 2",
+        "maxFeCapacity": 13,
+        "maxBeCapacity": 12,
+        "maxSdCapacity": 9
+      },
+      {
+        "id": 3,
+        "name": "Sprint 3",
+        "maxFeCapacity": 13,
+        "maxBeCapacity": 14,
+        "maxSdCapacity": 8
+      },
+      {
+        "id": 4,
+        "name": "Sprint 4",
+        "maxFeCapacity": 13,
+        "maxBeCapacity": 13,
+        "maxSdCapacity": 7
+      },
+      {
+        "id": 5,
+        "name": "Sprint 5",
+        "maxFeCapacity": 6,
+        "maxBeCapacity": 7,
+        "maxSdCapacity": 3
+      },
+      {
+        "id": 6,
+        "name": "Out of scope",
+        "maxFeCapacity": 5000,
+        "maxBeCapacity": 7000,
+        "maxSdCapacity": 4000
+      }
+    ],
+    "features": [
+      {
+        "id": 1,
+        "subject": "MSD Partner - handover offer from sales to partner",
+        "priority": 10,
+        "userStories": [
+          {
+            "subject": "BE: Do not send Create event to Kafka",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: For Agent we have to ignore the iAM checks",
+            "feCapacity": 0,
+            "beCapacity": 4,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Get customers list from SD",
+            "feCapacity": 0,
+            "beCapacity": 2,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: In case of Agent AND no Partner has set - find or create partner and user call",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: In case of Agent AND there is a valid partner ID",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Populate the first contact person",
+            "feCapacity": 0,
+            "beCapacity": 2,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Transfer operation (Clone if it not exists already the PartnerCustomer)",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Transfer operation (Eliminate the first contact person)",
+            "feCapacity": 0,
+            "beCapacity": 2,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Transfer operation (Send Create event to Kafka)",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Block contact persons / signature persons functionality",
+            "feCapacity": 4,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: New button based on Agent role - Get partner list",
+            "feCapacity": 3,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: New button based on Agent role - Re-init the offer’s permissions",
+            "feCapacity": 2,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "SD: Verify exisitng calls / Testing - final part",
+            "feCapacity": 0,
+            "beCapacity": 0,
+            "sdCapacity": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "subject": "MSD Partner: Create offer for customer without existing partner relationship",
+        "priority": 9,
+        "userStories": [
+          {
+            "subject": "FE: Checks the given CMA",
+            "feCapacity": 3,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Mark offer that it was created without Partner – Customer relationship",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "SD: New field on offer",
+            "feCapacity": 0,
+            "beCapacity": 0,
+            "sdCapacity": 1
+          },
+          ]
+      },
+      {
+        "id": 3,
+        "subject": "MSD Partner: Application switch to CMA",
+        "priority": 8,
+        "userStories": [
+          {
+            "subject": "FE: Replace companyIndex request param with CMA",
+            "feCapacity": 2,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Replace symphony call with zcmdb & gaia calls to get locations data",
+            "feCapacity": 0,
+            "beCapacity": 4,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Replace several SD calls to work with CMA",
+            "feCapacity": 0,
+            "beCapacity": 2,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "SD: Add link to CMA on existing offer",
+            "feCapacity": 0,
+            "beCapacity": 0,
+            "sdCapacity": 2
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "subject": "MSD Partner - Partner involves Swisscom to finalize the offer",
+        "priority": 7,
+        "userStories": [
+          {
+            "subject": "BE: Endpoint for Complete partner request",
+            "feCapacity": 0,
+            "beCapacity": 3,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Endpoint for Involve Swisscom",
+            "feCapacity": 0,
+            "beCapacity": 5,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Hide options based on user role",
+            "feCapacity": 0,
+            "beCapacity": 1,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Integrate APP_SBL_MISE_601 micros to create a SR in Symphony",
+            "feCapacity": 0,
+            "beCapacity": 5,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Manage Notes (Create note in SD)",
+            "feCapacity": 0,
+            "beCapacity": 2,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Manage Notes (New endpoint for getting the notes)",
+            "feCapacity": 0,
+            "beCapacity": 3,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: FE: Add a green banner",
+            "feCapacity": 1,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Endpoint for complete partner request",
+            "feCapacity": 5,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Endpoint for involve swisscom",
+            "feCapacity": 5,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Hide options based on user role",
+            "feCapacity": 8,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: New page for notes",
+            "feCapacity": 5,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: PSS user role (Check and extand current user role validation)",
+            "feCapacity": 1,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+           {
+            "subject": "FE: PSS user role (Hiding UI elements based on role )",
+            "feCapacity": 2,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "SD: Create Note entity - Link to offer - Create additional nodes",
+            "feCapacity": 0,
+            "beCapacity": 0,
+            "sdCapacity": 8
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "subject": "MSD Partner - Asyncronous PRIXX update",
+        "priority": 5,
+        "userStories": [
+          {
+            "subject": "BE: Add extra flag on offer while sync still running",
+            "feCapacity": 0,
+            "beCapacity": 8,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Check if offer is based on standard or individual price and change the prixx async",
+            "feCapacity": 0,
+            "beCapacity": 3,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "BE: Work with a finish event and messaging API to know when update is finished",
+            "feCapacity": 0,
+            "beCapacity": 2,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Based on the blocker flag we have to block actions on FE",
+            "feCapacity": 3,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Message notification if user tries to execute the action again",
+            "feCapacity": 2,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "FE: Websocket connection to inform about the operation finish event",
+            "feCapacity": 3,
+            "beCapacity": 0,
+            "sdCapacity": 0
+          },
+          {
+            "subject": "SD: Add flag on offer",
+            "feCapacity": 0,
+            "beCapacity": 0,
+            "sdCapacity": 1
+          }
+        ]
+      }
+    ]
+  }
