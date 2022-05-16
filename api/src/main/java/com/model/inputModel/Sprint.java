@@ -16,5 +16,6 @@ public class Sprint {
     private Long maxBeCapacity;
     private Long maxFeCapacity;
     private Long maxSdCapacity;
+    private Long sharedCapacity;    //can be used for both Fe and Be.
     private String name;
 }

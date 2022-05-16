@@ -27,11 +27,13 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[]{
                 //   Hard constraints
-                feStoryPointsConflictTotal(constraintFactory),
                 fixedSprint(constraintFactory),
+                feStoryPointsConflictTotal(constraintFactory),
                 beStoryPointsConflictTotal(constraintFactory),
                 sdStoryPointsConflictTotal(constraintFactory),
+                //soft constraints
                 featurePriority(constraintFactory),
+                sdCapacityGoesFirst(constraintFactory),
                 sprintCapacityUsage(constraintFactory)
                 //
         };
@@ -85,8 +87,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 .forEach(DomainUserStory.class)
                 .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId))
                 .filter((us1, us2) -> (
-                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6 && us2.getFixedSprint()==0) ||
-                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6) && us1.getFixedSprint()==0))
+                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6 && us2.getFixedSprint() == 0) ||
+                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6) && us1.getFixedSprint() == 0))
                 .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
     }
 
@@ -100,14 +102,30 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     }
 
     public Constraint fixedSprint(ConstraintFactory constraintFactory) {
-        // if sprint is fixed for specific user story then we place it there with the hard constraint
+        // if sprint is fixed for specific user story then we place it there
+        // with the hard constraint
         return constraintFactory
                 .forEach(DomainUserStory.class).filter(domainUserStory -> (domainUserStory.getFixedSprint() != domainUserStory.getSprint().getId()) && domainUserStory.getFixedSprint() != 0)
                 .penalize("Fixed sprint constraint violated", HardSoftScore.ONE_HARD, domainUserStory -> 1);
+    }
 
-//                    .join(DomainUserStory.class, Joiners.equal(DomainUserStory::getId))
-//                    .filter((us1, us2) -> (us1.getSprint().getId() == us1.getFixedSprint().longValue()) && us1.getFixedSprint()!=0)
-//                    .penalize("Fixed sprint constraint violated", HardSoftScore.ONE_HARD, (us1, us2) -> 1);
+    public Constraint sdCapacityGoesFirst(ConstraintFactory constraintFactory) {
+        // if SD user story exists with other user stories for the same feature - we try to position in to earlier or same sprint
+        return constraintFactory
+                .forEach(DomainUserStory.class)
+                .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId)).
+                filter((us1, us2) -> (
+                        us1.getFeature().getId() == us2.getFeature().getId() && ((
+                                us2.getSdCapacity() != 0 && (us1.getBeCapacity() != 0 || us1.getFeCapacity() != 0) &&
+                                        us1.getSprint().getId() < us2.getSprint().getId()
+                        ) ||
+                                (
+                                        us1.getSdCapacity() != 0 && (us2.getBeCapacity() != 0 || us2.getFeCapacity() != 0) &&
+                                                us2.getSprint().getId() < us1.getSprint().getId()
+                                )
+                        )
+                )).penalize("SD user story placed later then FE or be", HardSoftScore.ONE_SOFT, (domainUserStory1, domainUserStory2) -> 1);
+
     }
 
     //    Constraint roomConflict(ConstraintFactory constraintFactory) {
