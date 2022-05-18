@@ -4,6 +4,7 @@ import com.domain.PiPlanning;
 import com.google.gson.Gson;
 import com.model.inputModel.Planning;
 import com.model.outputModel.OutputModel;
+import com.model.outputModel.OutputModelUSView;
 import com.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,5 +34,14 @@ public class Controller {
 
         return service.solve(planningParsed);
     }
+
+    @PostMapping("/solveWithUSListReturn")
+    public OutputModelUSView solveWithUSListReturn(@RequestBody String planning) {
+        Gson gson = new Gson();
+        Planning planningParsed = gson.fromJson(planning, Planning.class);
+
+        return service.solveWithUSListReturn(planningParsed);
+    }
+
 }
 

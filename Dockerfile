@@ -5,7 +5,7 @@ LABEL maintainer="Timo"
 
 
 
-EXPOSE 9090
+EXPOSE 80
 
 WORKDIR /home
 RUN mkdir logs

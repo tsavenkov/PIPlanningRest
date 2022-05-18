@@ -23,7 +23,8 @@ model2 is second option, a bit more simplified, should be more convenient during
 
 ## Docker commands to run it as a container
 mvn clean install
-docker build  -t  23123411222/solver:piplanning .
-docker run -it -p 9090:9090 --rm --name piplanning 23123411222/solver:piplanning
+docker build  -t  23123411222/swisscom .
+docker push 23123411222/swisscom
+docker run -it -p 80:80 --rm --name piplanning 23123411222/swisscom
 
 
