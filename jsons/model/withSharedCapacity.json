@@ -1,0 +1,242 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 11,
+      "maxBeCapacity": 17,
+      "sharedCapacity" : 5,
+      "maxSdCapacity": 5
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 8,
+      "maxBeCapacity": 11,
+      "sharedCapacity" : 5,
+      "maxSdCapacity": 7
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "maxFeCapacity": 11,
+      "maxBeCapacity": 18,
+      "sharedCapacity" : 5,
+      "maxSdCapacity": 7
+    },
+    {
+      "id": 4,
+      "name": "Sprint 4",
+      "maxFeCapacity": 12,
+      "maxBeCapacity": 16,
+      "sharedCapacity" : 5,
+      "maxSdCapacity": 6
+    },
+    {
+      "id": 5,
+      "name": "Sprint 5",
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "sharedCapacity" : 0,
+      "maxSdCapacity": 0
+    },
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "FM-MSD, Step1of4: Plain vanilla - Create Offer from FM Task or Opportunity (based on Tapas-MSD interface) ",
+      "priority": 10,
+      "userStories": [
+        {
+          "subject": "FE: Renaming field",
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "BE: Renaming and adding the new user",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "SD: Renaming field",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "MSD - Table-View incl. Bulk-Changes - New/Change Options",
+      "priority": 9,
+      "userStories": [
+        {
+          "subject": "FE: T1 - Reuse configuration form",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: T2 - Adapt form rules",
+          "feCapacity": 13,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: T3 - Handle transition for Cancel action",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: T4 - Handle Save action",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "BE: T4 - Async call for saving options",
+          "feCapacity": 0,
+          "beCapacity": 13,
+          "sdCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subject": "MSD - Table-View incl. Bulk-Change - Column-Settings",
+      "priority": 8,
+      "userStories": [
+        {
+          "subject": "FE: T1-3 Add button, tooltip, implement modal",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: T4-5 Functionality for modal",
+          "feCapacity": 21,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "BE: T4-5 Persist column settings",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "SD: T4-5 Add new field on design level to store column settings",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "subject": "MSD Corporate: Application switch to CMA",
+      "priority": 7,
+      "userStories": [
+        {
+          "subject": "BE: MSD Corporate: Application switch to CMA",
+          "feCapacity": 0,
+          "beCapacity": 21,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: MSD Corporate: Application switch to CMA",
+          "feCapacity": 21,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "SD: MSD Corporate: Application switch to CMA",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 13
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "subject": "MSD - Remove ECA Asia and ECA USA from Screen Pricing. They are new only on Company Module, Candidate Pricing, with MRC & OTC = Offer",
+      "priority": 5,
+      "userStories": [
+        {
+          "subject": "SD: T1 - Modify the value for the flag",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 1
+        },
+        {
+          "subject": "BE: T1 - Check existing logic on document",
+          "feCapacity": 0,
+          "beCapacity": 1,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: T2 - Add ECA label to Prices Modal",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "BE: T2 - Grouping and Save logic",
+          "feCapacity": 0,
+          "beCapacity": 21,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "SD: T2 - Make sure that all operations works with new logic ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3
+        },
+        {
+          "subject": "SD: T2 - Add extra field for option configuration",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subject": "Catalog changes",
+      "priority": 11,
+      "userStories": [
+        {
+          "subject": "SD: Catalog Change",
+          "fixedSprint": 1,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3
+        },
+        {
+          "subject": "BE: Catalog Change",
+          "fixedSprint": 1,
+          "feCapacity": 0,
+          "beCapacity": 4,
+          "sdCapacity": 0
+        },
+        {
+          "subject": "FE: Catalog Change",
+          "fixedSprint": 1,
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0
+        }
+      ]
+    }
+  ]
+}

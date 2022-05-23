@@ -31,6 +31,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 feStoryPointsConflictTotal(constraintFactory),
                 beStoryPointsConflictTotal(constraintFactory),
                 sdStoryPointsConflictTotal(constraintFactory),
+                febeSharedStoryPointsConflictTotal(constraintFactory),  //added constraint that total fe and be can not exceed with respect to shared capacity
                 //soft constraints
                 featurePriority(constraintFactory),
                 sdCapacityGoesFirst(constraintFactory),
@@ -50,22 +51,31 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 //        };
     }
 
+    public Constraint febeSharedStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
+        // sum of FE and BE
+        return constraintFactory.forEach(DomainUserStory.class)
+                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
+                .filter((sprint, totalFEBECapacity) -> totalFEBECapacity > (sprint.getMaxFeCapacity() + sprint.getMaxFeCapacity() + sprint.getSharedCapacity() + delta))
+                .penalize("Total BE FE exceed with shared capacity conflict", HardSoftScore.ONE_HARD,
+                        (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity());
+    }
+
     public Constraint feStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // fe story points for spring can not be more than total sprint fe capacity.
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getFeCapacity))
-                .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity() + delta)
+                .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity() + sprint.getSharedCapacity() + delta)
                 .penalize("FE story points conflict", HardSoftScore.ONE_HARD,
-                        (sprint, totalFECapacity) -> totalFECapacity - sprint.getMaxFeCapacity());
+                        (sprint, totalFECapacity) -> totalFECapacity - sprint.getMaxFeCapacity() - sprint.getSharedCapacity());
     }
 
     public Constraint beStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // fe story points for spring can not be more than total sprint fe capacity.
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBeCapacity))
-                .filter((sprint, totalBECapacity) -> totalBECapacity > sprint.getMaxBeCapacity() + delta)
+                .filter((sprint, totalBECapacity) -> totalBECapacity > sprint.getMaxBeCapacity() + sprint.getSharedCapacity() + delta)
                 .penalize("BE story points conflict", HardSoftScore.ONE_HARD,
-                        (sprint, totalBECapacity) -> totalBECapacity - sprint.getMaxBeCapacity());
+                        (sprint, totalBECapacity) -> totalBECapacity - sprint.getMaxBeCapacity() - sprint.getSharedCapacity());
     }
 
     public Constraint sdStoryPointsConflictTotal(ConstraintFactory constraintFactory) {

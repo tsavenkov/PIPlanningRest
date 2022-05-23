@@ -32,10 +32,7 @@ public class DomainSprint {
     @Setter
     private String name;
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     @Getter
     @Setter
@@ -58,5 +55,14 @@ public class DomainSprint {
     @Getter
     @Setter
     private int unusedSDCapacity;
+
+    @Getter
+    @Setter
+    private int sharedCapacity;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
 }

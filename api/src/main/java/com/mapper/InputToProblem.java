@@ -28,6 +28,7 @@ public class InputToProblem implements Serializable {
                         .maxBeCapacity(a.getMaxBeCapacity().intValue())
                         .maxFeCapacity(a.getMaxFeCapacity().intValue())
                         .maxSdCapacity(a.getMaxSdCapacity().intValue())
+                        .sharedCapacity(a.getSharedCapacity()!= null ? a.getSharedCapacity().intValue() : 0)
                         .name(a.getName())
                         .build());
 
@@ -47,6 +48,7 @@ public class InputToProblem implements Serializable {
                                 .beCapacity(b.getBeCapacity().intValue())
                                 .feature(domainFeature)
                                 .feCapacity(b.getFeCapacity().intValue())
+                                .befeTotalCapacity(b.getBeCapacity().intValue() + b.getFeCapacity().intValue())
                                 .subject(b.getSubject())
                                 .sdCapacity(b.getSdCapacity().intValue())
                                 .fixedSprint(b.getFixedSprint() == null ? 0 : b.getFixedSprint())
