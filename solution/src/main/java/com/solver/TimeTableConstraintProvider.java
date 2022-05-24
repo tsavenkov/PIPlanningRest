@@ -53,11 +53,18 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 
     public Constraint febeSharedStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
         // sum of FE and BE
+//        return constraintFactory.forEach(DomainUserStory.class)
+//                                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
+//                                .filter((sprint, totalFEBECapacity) -> (totalFEBECapacity > 17))
+//                                .penalize("Total BE FE exceed with shared capacity conflict", HardSoftScore.ONE_HARD,
+//                                        (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity());
+
+
         return constraintFactory.forEach(DomainUserStory.class)
-                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
-                .filter((sprint, totalFEBECapacity) -> totalFEBECapacity > (sprint.getMaxFeCapacity() + sprint.getMaxFeCapacity() + sprint.getSharedCapacity() + delta))
-                .penalize("Total BE FE exceed with shared capacity conflict", HardSoftScore.ONE_HARD,
-                        (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity());
+                        .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
+                        .filter((sprint, totalFEBECapacity) -> (totalFEBECapacity > (sprint.getMaxFeCapacity() + sprint.getMaxBeCapacity() + sprint.getSharedCapacity() + delta)))
+                        .penalize("Total BE FE exceed with shared capacity conflict", HardSoftScore.ONE_HARD,
+                                (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity() - delta);
     }
 
     public Constraint feStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
