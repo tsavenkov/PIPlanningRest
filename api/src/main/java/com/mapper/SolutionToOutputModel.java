@@ -83,17 +83,17 @@ public class SolutionToOutputModel implements Serializable {
                 outputUserStory.setCapacity(a.getBeCapacity() + a.getSdCapacity() + a.getFeCapacity());   //todo: change to separate capacities. at the moment works since most of the cases only cap exists for the user
                 // story
                 if (a.getSprint().getId() == 1)
-                    outputUserStory.setSprint1name(a.getSubject());
+                    outputUserStory.setSprint1name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
                 else if (a.getSprint().getId() == 2)
-                    outputUserStory.setSprint2name(a.getSubject());
+                    outputUserStory.setSprint2name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
                 else if (a.getSprint().getId() == 3)
-                    outputUserStory.setSprint3name(a.getSubject());
+                    outputUserStory.setSprint3name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
                 else if (a.getSprint().getId() == 4)
-                    outputUserStory.setSprint4name(a.getSubject());
+                    outputUserStory.setSprint4name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
                 else if (a.getSprint().getId() == 5)
-                    outputUserStory.setSprint5name(a.getSubject());
+                    outputUserStory.setSprint5name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
                 else if (a.getSprint().getId() == 6)
-                    outputUserStory.setOutOfScopeName(a.getSubject());
+                    outputUserStory.setOutOfScopeName(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
                 outputUserStories.add(outputUserStory);
             }
             outputModel.setOutputUserStories(outputUserStories);
@@ -101,8 +101,10 @@ public class SolutionToOutputModel implements Serializable {
 
             /// get the capacities of the sprints
             for (DomainSprint sprint : solution.getSprintList()) {
+                int nonUsedSharedCapacity = sprint.getSharedCapacity() + (sprint.getUnusedFECapacity() < 0 ? sprint.getUnusedFECapacity() : 0) + (sprint.getUnusedBECapacity() < 0 ? sprint.getUnusedBECapacity() : 0);
                 USCapacity usCapacity = USCapacity.builder()
                         .id(sprint.getId())
+                        .sharedCapacity(sprint.getSharedCapacity())
                         .maxFeCapacity(sprint.getMaxFeCapacity())
                         .maxBeCapacity(sprint.getMaxBeCapacity())
                         .maxSdCapacity(sprint.getMaxSdCapacity())
@@ -111,11 +113,12 @@ public class SolutionToOutputModel implements Serializable {
                         .nonUsedSdCapacity(sprint.getUnusedSDCapacity())
                         .usedFeCapacity(sprint.getMaxFeCapacity() - sprint.getUnusedFECapacity())
                         .usedBeCapacity(sprint.getMaxBeCapacity() - sprint.getUnusedBECapacity())
-                        .usedSdCapacity(sprint.getMaxSdCapacity() - sprint.getUnusedSDCapacity()).build();
+                        .usedSdCapacity(sprint.getMaxSdCapacity() - sprint.getUnusedSDCapacity())
+                        .nonUsedSharedCapacity(nonUsedSharedCapacity)
+                        .usedSharedCapacity(sprint.getSharedCapacity() - nonUsedSharedCapacity).build();
                 outputModel.getSprintsCaps().add(usCapacity);
             }
         }
-
         outputModel.setTotalUnusedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
         outputModel.setTotalUnusedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
         outputModel.setTotalUnusedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());

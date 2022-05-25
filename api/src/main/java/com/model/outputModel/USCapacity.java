@@ -18,6 +18,7 @@ public class USCapacity {
     private int usedFeCapacity;
     private int nonUsedFeCapacity;
 
+
     private int maxBeCapacity;
     private int usedBeCapacity;
     private int nonUsedBeCapacity;
@@ -25,5 +26,9 @@ public class USCapacity {
     private int maxSdCapacity;
     private int usedSdCapacity;
     private int nonUsedSdCapacity;
+
+    private int sharedCapacity;
+    private int usedSharedCapacity;
+    private int nonUsedSharedCapacity;
 
 }
