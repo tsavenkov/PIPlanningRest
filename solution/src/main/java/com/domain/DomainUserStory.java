@@ -65,6 +65,8 @@ public class DomainUserStory {
     @PlanningVariable(valueRangeProviderRefs = "sprintRange")
     private DomainSprint sprint;
 
+    @PlanningVariable(valueRangeProviderRefs = "championsRange")
+    private DomainChampion champion;
 
     public DomainSprint getSprint() {
         return sprint;

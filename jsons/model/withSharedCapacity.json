@@ -5,39 +5,187 @@
       "name": "Sprint 1",
       "maxFeCapacity": 11,
       "maxBeCapacity": 17,
-      "sharedCapacity" : 5,
-      "maxSdCapacity": 5
+      "sharedCapacity": 5,
+      "maxSdCapacity": 5,
+      "champions": [
+        {
+          "name": "Ionut",
+          "capacity": 5,
+          "capaType": "fe"
+        },
+        {
+          "name": "Norbi",
+          "capacity": 6,
+          "capaType": "fe"
+        },
+        {
+          "name": "Kristi",
+          "capacity": 10,
+          "capaType": "be"
+        },
+        {
+          "name": "Janos",
+          "capacity": 7,
+          "capaType": "be"
+        },
+        {
+          "name": "Jero",
+          "capacity": 2,
+          "capaType": "sd"
+        },
+        {
+          "name": "Lidia",
+          "capacity": 3,
+          "capaType": "sd"
+        },
+        {
+          "name": "Swanand",
+          "capacity": 5,
+          "capaType": "shared"
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Sprint 2",
       "maxFeCapacity": 8,
       "maxBeCapacity": 11,
-      "sharedCapacity" : 5,
-      "maxSdCapacity": 7
+      "sharedCapacity": 5,
+      "maxSdCapacity": 7,
+      "champions": [
+        {
+          "name": "Ionut",
+          "capacity": 5,
+          "capaType": "fe"
+        },
+        {
+          "name": "Norbi",
+          "capacity": 3,
+          "capaType": "fe"
+        },
+        {
+          "name": "Kristi",
+          "capacity": 5,
+          "capaType": "be"
+        },
+        {
+          "name": "Janos",
+          "capacity": 6,
+          "capaType": "be"
+        },
+        {
+          "name": "Jero",
+          "capacity": 4,
+          "capaType": "sd"
+        },
+        {
+          "name": "Lidia",
+          "capacity": 3,
+          "capaType": "sd"
+        },
+        {
+          "name": "Swanand",
+          "capacity": 5,
+          "capaType": "shared"
+        }
+      ]
     },
     {
       "id": 3,
       "name": "Sprint 3",
       "maxFeCapacity": 11,
       "maxBeCapacity": 18,
-      "sharedCapacity" : 5,
-      "maxSdCapacity": 7
+      "sharedCapacity": 5,
+      "maxSdCapacity": 7,
+      "champions": [
+        {
+          "name": "Ionut",
+          "capacity": 5,
+          "capaType": "fe"
+        },
+        {
+          "name": "Norbi",
+          "capacity": 6,
+          "capaType": "fe"
+        },
+        {
+          "name": "Kristi",
+          "capacity": 10,
+          "capaType": "be"
+        },
+        {
+          "name": "Janos",
+          "capacity": 8,
+          "capaType": "be"
+        },
+        {
+          "name": "Jero",
+          "capacity": 4,
+          "capaType": "sd"
+        },
+        {
+          "name": "Lidia",
+          "capacity": 3,
+          "capaType": "sd"
+        },
+        {
+          "name": "Swanand",
+          "capacity": 5,
+          "capaType": "shared"
+        }
+      ]
     },
     {
       "id": 4,
       "name": "Sprint 4",
       "maxFeCapacity": 12,
       "maxBeCapacity": 16,
-      "sharedCapacity" : 5,
-      "maxSdCapacity": 6
+      "sharedCapacity": 5,
+      "maxSdCapacity": 6,
+      "champions": [
+        {
+          "name": "Ionut",
+          "capacity": 6,
+          "capaType": "fe"
+        },
+        {
+          "name": "Norbi",
+          "capacity": 6,
+          "capaType": "fe"
+        },
+        {
+          "name": "Kristi",
+          "capacity": 10,
+          "capaType": "be"
+        },
+        {
+          "name": "Janos",
+          "capacity": 6,
+          "capaType": "be"
+        },
+        {
+          "name": "Jero",
+          "capacity": 2,
+          "capaType": "sd"
+        },
+        {
+          "name": "Lidia",
+          "capacity": 4,
+          "capaType": "sd"
+        },
+        {
+          "name": "Swanand",
+          "capacity": 5,
+          "capaType": "shared"
+        }
+      ]
     },
     {
       "id": 5,
       "name": "Sprint 5",
       "maxFeCapacity": 0,
       "maxBeCapacity": 0,
-      "sharedCapacity" : 0,
+      "sharedCapacity": 0,
       "maxSdCapacity": 0
     },
     {

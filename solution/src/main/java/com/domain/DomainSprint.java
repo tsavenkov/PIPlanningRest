@@ -21,6 +21,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Builder
 public class DomainSprint {
@@ -31,7 +33,6 @@ public class DomainSprint {
     @Getter
     @Setter
     private String name;
-
 
 
     @Getter
@@ -59,6 +60,10 @@ public class DomainSprint {
     @Getter
     @Setter
     private int sharedCapacity;
+
+    @Getter
+    @Setter
+    private List<DomainChampionInSprint> domainChampionInSprintList;
 
     @Override
     public String toString() {

@@ -50,6 +50,7 @@ public class PiPlanning {
         this.sprintList = sprintList;
     }
 
+
     @PlanningEntityCollectionProperty
     public List<DomainUserStory> getUserStoryList() {
         return userStoryList;
@@ -68,8 +69,6 @@ public class PiPlanning {
     public void setScore(HardSoftScore score) {
         this.score = score;
     }
-
-
 
 
 }
