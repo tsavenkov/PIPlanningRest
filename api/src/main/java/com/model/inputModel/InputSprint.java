@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class Sprint {
+public class InputSprint {
 
     private Long id;
     private Long maxBeCapacity;
@@ -20,5 +20,5 @@ public class Sprint {
     private Long maxSdCapacity;
     private Long sharedCapacity;    //can be used for both Fe and Be.
     private String name;
-    private List<Champion> champions;
+    private List<InputChampion> champions;
 }

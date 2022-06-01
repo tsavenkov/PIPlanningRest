@@ -11,13 +11,5 @@ public class DomainChampion implements Serializable {
 
     @Getter
     @Setter
-    private int id;
-
-    @Getter
-    @Setter
     private String name;
-
-    @Getter
-    @Setter
-    private String capaType;   //fe, be, sd, shared =fe+be
 }

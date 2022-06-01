@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @Builder
-public class UserStory {
+public class InputUserStory {
     private Long beCapacity;
     private Long feCapacity;
     private Long sdCapacity;

@@ -12,8 +12,8 @@ import com.model.outputModel.OutputModelUSView;
 public class Service {
 
     public PiPlanning solve(Planning inputPlanning) {
-        PiPlanning piPlanning = InputToProblem.mapInputToProblem(inputPlanning);
-        return TimeTableApp.solve(piPlanning);
+        PiPlanning solution = InputToProblem.mapInputToProblem(inputPlanning);
+        return TimeTableApp.solve(solution);
     }
 
     public OutputModel solveWithTransform(Planning inputPlanning) {
@@ -22,7 +22,7 @@ public class Service {
     }
 
     public OutputModelUSView solveWithUSListReturn(Planning inputPlanning) {
-            PiPlanning solution = solve(inputPlanning);
-            return SolutionToOutputModel.mapSolutionToOutputUserStories(solution);
-        }
+        PiPlanning solution = solve(inputPlanning);
+        return SolutionToOutputModel.mapSolutionToOutputUserStories(solution);
+    }
 }

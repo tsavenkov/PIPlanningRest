@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 public class Planning {
 
-    private List<Feature> features;
-    private List<Sprint> sprints;
+    private List<InputFeature> features;
+    private List<InputSprint> sprints;
 
 }

@@ -11,9 +11,13 @@ public class DomainChampionInSprint implements Serializable {
 
     @Getter
     @Setter
-    private int id;      // references the id of the champion with the capacity specification
+    private String name;      // references the id of the champion with the capacity specification
 
     @Getter
     @Setter
     private int capacity;   //amount
+
+    @Getter
+    @Setter
+    private String capaType;   //fe be sd shared
 }
