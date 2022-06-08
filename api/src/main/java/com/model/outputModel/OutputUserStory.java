@@ -19,6 +19,7 @@ public class OutputUserStory {
     private String Sprint3name;
     private String Sprint4name;
     private String Sprint5name;
-    private String outOfScopeName;
+    private String Sprint6name;          //with id = 7
+    private String outOfScopeName;        //always with id = 6
     private int capacity;
 }

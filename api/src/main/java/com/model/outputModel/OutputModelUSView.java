@@ -3,7 +3,7 @@ package com.model.outputModel;
 import com.domain.DomainFeature;
 import lombok.Builder;
 import lombok.Data;
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 
 import java.util.List;
 
@@ -12,14 +12,16 @@ import java.util.List;
 public class OutputModelUSView {
     private static final long serialVersionUID = 1L;
 
-    private HardSoftScore score;
+    private HardMediumSoftScore score;
     private int totalUnusedFECapacity;
     private int totalUnusedBECapacity;
     private int totalUnusedSDCapacity;
+    private int totalUnusedQACapacity;
 
     private int totalUndistributedFECapacity;
     private int totalUndistributedBECapacity;
     private int totalUndistributedSDCapacity;
+    private int totalUndistributedQACapacity;
     private List<OutputUserStory> outputUserStories;
 
     private List<DomainFeature> partiallyPlannedFeatures;

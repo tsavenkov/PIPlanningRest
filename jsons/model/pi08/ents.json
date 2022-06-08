@@ -1,0 +1,485 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 12,
+      "maxBeCapacity": 17,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 7,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 11,
+      "maxBeCapacity": 15,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 3,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "maxFeCapacity": 9,
+      "maxBeCapacity": 17,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 4,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 4,
+      "name": "Sprint 4",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 11,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 3,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 5,
+      "name": "Sprint 5",
+      "maxFeCapacity": 11,
+      "maxBeCapacity": 6,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 3,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000,
+      "maxQaCapacity": 1000
+    },
+    {
+      "id": 7,
+      "name": "Sprint 6",
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 0,
+      "maxQaCapacity": 0
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "SALESPR-209 MSD - Table-View incl. Bulk-Changes - New/Change Options",
+      "priority": 20,
+      "userStories": [
+        {
+          "subject": "FE",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "SALESPR-1043 MSD Corporate: Application switch to CMA",
+      "priority": 19,
+      "userStories": [
+        {
+          "subject": "BE: Prepare continue in PI2022-11",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subject": "SALESPR-936 MSD: MS Teams Telephony - Service Katalog mr2022-08",
+      "priority": 18,
+      "userStories": [
+        {
+          "subject": "FE",
+          "fixedSprint": 4,
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "subject": "SALESPR-108 MSD: Screen Pricing - Show warning if there is locations without candidate",
+      "priority": 17,
+      "userStories": [
+        {
+          "subject": "BE: Check if there are locations without candidates",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: New alert for pricing page",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1087: Screen Pricing - Show warning if there is locations without candidate",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "subject": "SALESPR-915 MSD - Offer Request Variant - Client agnostic search. As a result, MSD returns a direct link. Functions for: MSD Variant-ID, MSD Design-ID, Opty-ID, Tapas-Variant-ID, Prixx-Case-ID. Search for Solution Designer.",
+      "priority": 16,
+      "userStories": [
+        {
+          "subject": "FE: Client agostic search",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: Client agostic search",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "Mockup for long result list",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Client agostic search",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 8,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Client agostic search.part 2",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-915: Offer Request Variant - Client agnostic search",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 5
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subject": "SALESPR-1105 MSD - Table-View - Full-Screen (as for Billing, the Screen Reports)",
+      "priority": 15,
+      "userStories": [
+        {
+          "subject": "FE: Expand Table View Page",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1105: Table-View - Full-Screen",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "subject": "SALESPR-169 MSD-Prixx: Configured Offer-Volume in Prixx versus MSD visible (and checked)",
+      "priority": 14,
+      "userStories": [
+        {
+          "subject": "BE: Check current total prices with saved prices",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: Show warning if prices are different",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: New field on design level",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-169: MSD-Prixx: Configured Offer-Volume in Prixx versus MSD visible (and checked)",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "subject": "SALESPR-1088 MSD: Screen Pricing - Visualize if 'Current Prices' are differing (that are not configured)",
+      "priority": 12,
+      "userStories": [
+        {
+          "subject": "FE: compare prices and display flag or highlight values",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: map new field to identify configured options",
+          "feCapacity": 0,
+          "beCapacity": 1,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: new field for configured options and price operations",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1088: Screen Pricing - Visualize if 'Current Prices' are differing (that are not configured)",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "subject": "SALESPR-102 Add colum 'Partlist' (with info BX): TIS-Export - MSD processing - MSD export - COS-Sheet/Schobi-Tool",
+      "priority": 11,
+      "userStories": [
+        {
+          "subject": "BE: Extend the TIS excel processing with 'Partlist' column",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1026: Add colum 'Partlist' (with info BX): TIS-Export - MSD processing - MSD export - COS-Sheet/Schobi-Tool",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "subject": "SALESPR-1092 MSD - Table-View - fix and flexible columns - Move 'Name' from fix to new flexible and 'EC-Type' from flexible to fix",
+      "priority": 10,
+      "userStories": [
+        {
+          "subject": "FE: Change column order for Table View",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1092: Table-View - fix and flexible columns",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 1
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "subject": "SALESPR-1091 MSD - Table-View - Shortname with mouseover for Optiongroups and Options (to have less width in the columns)",
+      "priority": 9,
+      "userStories": [
+        {
+          "subject": "BE: Map new field  'shortname' for Table View",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: Show shortname in Tabel View",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1091: Table-View - Shortname with mouseover for Optiongroups and Options",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 5
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "subject": "SALESPR-1089 MSD: Table-View, Filter EC-Type - Multi-Select (to have no Candidates LAN-I Config per Default)",
+      "priority": 8,
+      "userStories": [
+        {
+          "subject": "FE: Implement multi-select for EC Type filter",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-1089: Table-View, Filter EC-Type - Multi-Select ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 5
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "subject": "SALESPR-837 MSD - Screen Pricing - Open/close all Price-Groups, with buttons 'Expand all prices-groups' and 'Collapse all prices-groups'",
+      "priority": 7,
+      "userStories": [
+        {
+          "subject": "FE: Expand/Collapse price groups on Pricing Page",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-837: Screen Pricing - Open/close all Price-Groups",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "subject": "SALESPR-175 MSD-Prixx - Direct link from Prixx to MSD",
+      "priority": 7,
+      "userStories": [
+        {
+          "subject": "BE: Send MSD design link to Prixx whenever the prixx case id is edited",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "subject": "SALESPR-803 MSD: Quick offers - Assign a Template 1..n times, If Dummy-Location than PriceInfo Output without InfraCheck & Time to Delivery",
+      "priority": 7,
+      "userStories": [
+        {
+          "subject": "FE: Topic-1: Possibility to assign multiple templates",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: Topic-1: assign custom templates multiple times Part1/2",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: Topic-1: assign custom templates multiple times Part2/2",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: Testing SALESPR-803: Quick offers - Assign a Template 1..n times, If Dummy-Location than PriceInfo Output without InfraCheck & Time to Delivery",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 5
+        }
+      ]
+    }
+  ]
+}

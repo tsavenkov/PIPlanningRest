@@ -22,7 +22,7 @@ import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ import java.util.List;
 @Builder
 public class PiPlanning {
 
-    private HardSoftScore score;
+    private HardMediumSoftScore score;
     private List<DomainSprint> sprintList;
 
     @Getter
@@ -61,11 +61,11 @@ public class PiPlanning {
 
 
     @PlanningScore
-    public HardSoftScore getScore() {
+    public HardMediumSoftScore getScore() {
         return score;
     }
 
-    public void setScore(HardSoftScore score) {
+    public void setScore(HardMediumSoftScore score) {
         this.score = score;
     }
 

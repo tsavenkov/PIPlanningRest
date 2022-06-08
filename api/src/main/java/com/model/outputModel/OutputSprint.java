@@ -24,10 +24,14 @@ public class OutputSprint {
     private int maxBeCapacity;
     private int usedBeCapacity;
     private int nonUsedBeCapacity;
-    
+
     private int maxSdCapacity;
     private int usedSdCapacity;
     private int nonUsedSdCapacity;
+
+    private int maxQACapacity;
+    private int usedQACapacity;
+    private int nonUsedQACapacity;
 
     private String name;
     private List<DomainUserStory> userStoryList;

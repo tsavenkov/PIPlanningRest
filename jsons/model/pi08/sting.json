@@ -1,0 +1,496 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 12,
+      "maxSdCapacity": 8,
+      "maxQaCapacity": 4
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 11,
+      "maxBeCapacity": 11,
+      "maxSdCapacity": 6,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "maxFeCapacity": 9,
+      "maxBeCapacity": 6,
+      "maxSdCapacity": 5,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 4,
+      "name": "Sprint 4",
+      "maxFeCapacity": 8,
+      "maxBeCapacity": 7,
+      "maxSdCapacity": 6,
+      "maxQaCapacity": 5
+    },
+    {
+      "id": 5,
+      "name": "Sprint 5",
+      "maxFeCapacity": 8,
+      "maxBeCapacity": 10,
+      "maxSdCapacity": 7,
+      "maxQaCapacity": 3
+    },
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000,
+      "maxQaCapacity": 1000
+    },
+    {
+      "id": 7,
+      "name": "Sprint 6",
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "maxSdCapacity": 0,
+      "maxQaCapacity": 0
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "SalesPR 916 B2BOST-2448 - MSD - Price = CHF 'Offer' - e2e Implementation of CHF 'Offer' - MSD Partner & Corp",
+      "priority": 100,
+      "userStories": [
+        {
+          "subject": "FE: T2 - Adjust price details modal",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: T2 - Adjust price details modal partner side",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: T3 - Remove 9999 value from the input",
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: T1 - Send price 'offer' to DOCO",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: T2 - Map new field",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: T4 - Build logic for sending offer instead of number",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: T4 - Verify xml",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: T1 - Adapt calculations",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: T2 - Extra field for options on request",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: T3 - Update the scripts to remove 9999 in the catalog",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: T4 - review filtering for Doco. Custom operation",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: automation",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "SalesPR 1039  MSD Partner - Use new zCMDB API to read customer contacts",
+      "priority": 90,
+      "userStories": [
+        {
+          "subject": "FE: Change the call for getting contact person for customers",
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE New call to zcmdb for getting customer contact person",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE New endpoint for customer contact person",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Logic for filtering by role and symContactId",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: automation",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subject": "SalesPR 957. Open MSD with partner id instead of CMA",
+      "priority": 80,
+      "userStories": [
+        {
+          "subject": "Replace cma request param with partnerId on contact person call",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Replace calls to zcmdb which are based on cma (to work with partnerId)",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: automation",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "subject": "SalesPR 1085 MSD SME - Discovery story for multiproduct offer ",
+      "priority": 70,
+      "userStories": [
+        {
+          "subject": "FE Analysis on Multiproduct offer",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Analysis on Multiproduct offer",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD Analysis on Multiproduct offer",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 8,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "subject": "SALESPR-1139 - MSD - PRIXX: Discovery story",
+      "priority": 60,
+      "userStories": [
+        {
+          "subject": "BE Analysis ",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD Analysis ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 8,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subject": "SalesPR 941 Adaption of the discount process",
+      "priority": 50,
+      "userStories": [
+        {
+          "subject": "FE Move the Insert discount error handling to Complete partner request button",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Adapt modals on insert discount",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: Review rendering and editing editability conditions on FE based on the status/attributes changes",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE On request discount the offer will be transfered to swisscom (almost the normal transfer flow)",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE When salesman finalize the offer (complete partner request button), automatically trigger fetch discounts (IF offer status is Discount approval",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Extend the email with the link URL to the Offer ",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "subject": "SalesPR 204 Offer approval by Swisscom",
+      "priority": 40,
+      "userStories": [
+        {
+          "subject": "fe New components on summary page: 'Request for approval' button, hint and approval box + hide/show  button based on design complexity flag (HIGH/LOW)",
+          "feCapacity": 13,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE if partner clicks product selection when the ownsership is swisscom then show blue banner",
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Blue banner on generate offer",
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Blue banner on request discount",
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Call Request for Approval from BE + green banner + refresh permissions after ownership change",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Update Complete request : add Approved/Not approved checkbox",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Refetch the offer complexity on each action which can affect it",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE new call to get complexity on  summary",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Extend create product with the 2 new flags : design complexity, design approval ",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Update design complexity flag to HIGH/LOW on all places where we change the configuration – location, candidate, configuration save depending on selected options",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Extend variant xml for doco with the 2 new flags on design level",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Check flags on request discount (error if Design Complexity = HIGH, Design Approval = NO)",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE New endpoint for Request for Approval",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Update complete partner request endpoint : set Design Approval flag",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE  Update Design Approval flag to NO on all places where we change the configuration – location, candidate, etc (if YES and any changes are made on design by partner) ",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Calculate complexity of the offer. flag on the offer",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Calculate complexity of the offer. new call to get complexity on  summary",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD Add Design Complexity, Design Approval flags on product",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "subject": "SalesPR 840 MSD Partner - Search customer to create offer",
+      "priority": 30,
+      "userStories": [
+        {
+          "subject": "FE Partner need to search customer to create offer, For that change customer dropdown into searchbox in create offer applet",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE add information icon near customer searchbox label",
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE Search in only  customer list and shows in alphabetical order",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "subject": "SalesPR 1041 MSD Partner - Prepare API to update offer status from external system",
+      "priority": 30,
+      "userStories": [
+        {
+          "subject": "BE Implement new API definition",
+          "feCapacity": 0,
+          "beCapacity": 8,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    }
+  ]
+}

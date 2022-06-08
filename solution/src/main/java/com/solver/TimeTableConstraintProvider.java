@@ -16,8 +16,9 @@
 
 package com.solver;
 
+import com.domain.DomainFeature;
 import com.domain.DomainUserStory;
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScore;
 import org.optaplanner.core.api.score.stream.*;
 
 public class TimeTableConstraintProvider implements ConstraintProvider {
@@ -31,9 +32,10 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 feStoryPointsConflictTotal(constraintFactory),
                 beStoryPointsConflictTotal(constraintFactory),
                 sdStoryPointsConflictTotal(constraintFactory),
+                qaStoryPointsConflictTotal(constraintFactory),
                 febeSharedStoryPointsConflictTotal(constraintFactory),  //added constraint that total fe and be can not exceed with respect to shared capacity
                 //soft constraints
-                featurePriority(constraintFactory),
+                userStoriesPriorityBasedOnFeaturePriority(constraintFactory),
                 sdCapacityGoesFirst(constraintFactory),
                 sprintCapacityUsage(constraintFactory)
                 //
@@ -52,19 +54,11 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     }
 
     public Constraint febeSharedStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
-        // sum of FE and BE
-//        return constraintFactory.forEach(DomainUserStory.class)
-//                                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
-//                                .filter((sprint, totalFEBECapacity) -> (totalFEBECapacity > 17))
-//                                .penalize("Total BE FE exceed with shared capacity conflict", HardSoftScore.ONE_HARD,
-//                                        (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity());
-
-
         return constraintFactory.forEach(DomainUserStory.class)
-                        .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
-                        .filter((sprint, totalFEBECapacity) -> (totalFEBECapacity > (sprint.getMaxFeCapacity() + sprint.getMaxBeCapacity() + sprint.getSharedCapacity() + delta)))
-                        .penalize("Total BE FE exceed with shared capacity conflict", HardSoftScore.ONE_HARD,
-                                (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity() - delta);
+                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBefeTotalCapacity))
+                .filter((sprint, totalFEBECapacity) -> (totalFEBECapacity > (sprint.getMaxFeCapacity() + sprint.getMaxBeCapacity() + sprint.getSharedCapacity() + delta)))
+                .penalize("Total BE FE exceed with shared capacity conflict", HardMediumSoftScore.ONE_HARD,
+                        (sprint, totalFEBECapacity) -> totalFEBECapacity - sprint.getMaxFeCapacity() - sprint.getMaxBeCapacity() - sprint.getSharedCapacity() - delta);
     }
 
     public Constraint feStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
@@ -72,7 +66,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getFeCapacity))
                 .filter((sprint, totalFECapacity) -> totalFECapacity > sprint.getMaxFeCapacity() + sprint.getSharedCapacity() + delta)
-                .penalize("FE story points conflict", HardSoftScore.ONE_HARD,
+                .penalize("FE story points conflict", HardMediumSoftScore.ONE_HARD,
                         (sprint, totalFECapacity) -> totalFECapacity - sprint.getMaxFeCapacity() - sprint.getSharedCapacity());
     }
 
@@ -81,7 +75,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getBeCapacity))
                 .filter((sprint, totalBECapacity) -> totalBECapacity > sprint.getMaxBeCapacity() + sprint.getSharedCapacity() + delta)
-                .penalize("BE story points conflict", HardSoftScore.ONE_HARD,
+                .penalize("BE story points conflict", HardMediumSoftScore.ONE_HARD,
                         (sprint, totalBECapacity) -> totalBECapacity - sprint.getMaxBeCapacity() - sprint.getSharedCapacity());
     }
 
@@ -90,32 +84,62 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         return constraintFactory.forEach(DomainUserStory.class)
                 .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getSdCapacity))
                 .filter((sprint, totalSDCapacity) -> totalSDCapacity > sprint.getMaxSdCapacity() + delta)
-                .penalize("SD story points conflict", HardSoftScore.ONE_HARD,
+                .penalize("SD story points conflict", HardMediumSoftScore.ONE_HARD,
                         (sprint, totalSDCapacity) -> totalSDCapacity - sprint.getMaxSdCapacity());
     }
 
-    public Constraint featurePriority(ConstraintFactory constraintFactory) {
+    public Constraint qaStoryPointsConflictTotal(ConstraintFactory constraintFactory) {
+        // fe story points for spring can not be more than total sprint fe capacity.
+        return constraintFactory.forEach(DomainUserStory.class)
+                .groupBy(DomainUserStory::getSprint, ConstraintCollectors.sum(DomainUserStory::getQaCapacity))
+                .filter((sprint, totalQACapacity) -> totalQACapacity > sprint.getMaxQACapacity() + delta)
+                .penalize("QA story points conflict", HardMediumSoftScore.ONE_HARD,
+                        (sprint, totalQACapacity) -> totalQACapacity - sprint.getMaxQACapacity());
+    }
+
+
+    public Constraint userStoriesPriorityBasedOnFeaturePriority(ConstraintFactory constraintFactory) {
         // the feature with the higher priority should go to the earlierst sprint     . Penalty is 1 for each violation
-        // we exclude from viaolation the case when feature is in Sprint 6 - it means its out of scope (because of hard constraints) and thats why we dont penalise that for ex. us with lower prio is in sprint 5 and
+        // we exclude from violation the case when feature is in Sprint 6 - it means its out of scope (because of hard constraints) and thats why we dont penalise that for ex. us with lower prio is in sprint 5 and
         // user story with higher prio is in sprint 6
 
         // this should also not include the feature with the fixed sprint
         return constraintFactory
-                .forEach(DomainUserStory.class)
-                .join(DomainUserStory.class, Joiners.lessThan(DomainUserStory::getId))
+                .forEachUniquePair(DomainUserStory.class)
                 .filter((us1, us2) -> (
                         (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6 && us2.getFixedSprint() == 0) ||
                                 (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6) && us1.getFixedSprint() == 0))
-                .penalize("Feature priority", HardSoftScore.ONE_SOFT, (us1, us2) -> 1);
+                .penalize("User stories priority", HardMediumSoftScore.ONE_SOFT, (us1, us2) -> 1);
+
+//        return constraintFactory         //remove out of scope condition
+//                        .forEachUniquePair(DomainUserStory.class)
+//                        .filter((us1, us2) -> (
+//                                (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getFixedSprint() == 0) ||
+//                                        (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId()) && us1.getFixedSprint() == 0))
+//                        .penalize("User stories priority", HardMediumSoftScore.ONE_SOFT, (us1, us2) -> 1);
+    }
+
+//    public Constraint featurePriority(ConstraintFactory constraintFactory) {
+//        // we penalize with the hard constraint the situation when 1 feature with the higher prio is later then lower prio
+//        return constraintFactory
+//                .forEachUniquePair(DomainFeature.class,
+//                        Joiners.lessThan(DomainFeature::getPriority))
+//                .filter(this::isCompletedLater)
+//                .penalize("Feature priority", HardSoftScore.ONE_HARD, (feature1, feature2) -> 1);
+//    }
+
+    //checks if feature 1 have lower priority then feature 2, but completed later then we return true
+    private boolean isCompletedLater(DomainFeature feature1, DomainFeature feature2) {
+        return true;
     }
 
     public Constraint sprintCapacityUsage(ConstraintFactory constraintFactory) {
         // this constraint makes sure that sprint can not contain unused capacity that covers some user stories which are in sprint 6
-        // we do trick here: we penalize every user story which is in  out of scope sprint 6 with the soft penalty. This automatically place  user story to the earlier sprint if it fits to the capacity hard constraint
+        // we do trick here: we penalize every user story which is in  out of scope sprint 6 with the medium penalty. This automatically place  user story to the earlier sprint if it fits to the capacity hard constraint
         return constraintFactory
                 .forEach(DomainUserStory.class)
                 .filter((us1) -> (us1.getSprint().getId() == 6))
-                .penalize("Out of scope: user story placed to sprint 6", HardSoftScore.ONE_SOFT, us1 -> 1);
+                .penalize("Out of scope: user story placed to sprint 6", HardMediumSoftScore.ONE_MEDIUM, us1 -> 1);
     }
 
     public Constraint fixedSprint(ConstraintFactory constraintFactory) {
@@ -123,7 +147,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // with the hard constraint
         return constraintFactory
                 .forEach(DomainUserStory.class).filter(domainUserStory -> (domainUserStory.getFixedSprint() != domainUserStory.getSprint().getId()) && domainUserStory.getFixedSprint() != 0)
-                .penalize("Fixed sprint constraint violated", HardSoftScore.ONE_HARD, domainUserStory -> 1);
+                .penalize("Fixed sprint constraint violated", HardMediumSoftScore.ONE_HARD, domainUserStory -> 1);
     }
 
     public Constraint sdCapacityGoesFirst(ConstraintFactory constraintFactory) {
@@ -141,7 +165,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                                                 us2.getSprint().getId() < us1.getSprint().getId()
                                 )
                         )
-                )).penalize("SD user story placed later then FE or be", HardSoftScore.ONE_SOFT, (domainUserStory1, domainUserStory2) -> 1);
+                )).penalize("SD user story placed later then FE or be", HardMediumSoftScore.ONE_SOFT, (domainUserStory1, domainUserStory2) -> 1);
 
     }
 
@@ -149,11 +173,11 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 //        // A room can accommodate at most one lesson at the same time.
 //        return constraintFactory
 //                // Select each pair of 2 different lessons ...
-//                .forEachUniquePair(UserStory.class,
+//                .forEachUniquePair(Lesson.class,
 //                        // ... in the same timeslot ...
-//                        Joiners.equal(UserStory::getTimeslot),
+//                        Joiners.equal(Lesson::getTimeslot),
 //                        // ... in the same room ...
-//                        Joiners.equal(UserStory::getSprint))
+//                        Joiners.equal(Lesson::getSprint))
 //                // ... and penalize each pair with a hard weight.
 //                .penalize("Room conflict", HardSoftScore.ONE_HARD);
 //    }
@@ -195,10 +219,10 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
 //    Constraint studentGroupSubjectVariety(ConstraintFactory constraintFactory) {
 //        // A student group dislikes sequential lessons on the same subject.
 //        return constraintFactory
-//                .forEach(UserStory.class)
-//                .join(UserStory.class,
-//                        Joiners.equal(UserStory::getSubject),
-//                        Joiners.equal(UserStory::getStudentGroup),
+//                .forEach(Lesson.class)
+//                .join(Lesson.class,
+//                        Joiners.equal(Lesson::getSubject),
+//                        Joiners.equal(Lesson::getStudentGroup),
 //                        Joiners.equal((lesson) -> lesson.getTimeslot().getDayOfWeek()))
 //                .filter((lesson1, lesson2) -> {
 //                    Duration between = Duration.between(lesson1.getTimeslot().getEndTime(),

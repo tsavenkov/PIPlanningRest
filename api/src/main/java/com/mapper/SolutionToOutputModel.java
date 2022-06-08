@@ -1,5 +1,6 @@
 package com.mapper;
 
+import com.consts.ModelConstants;
 import com.domain.DomainSprint;
 import com.domain.DomainUserStory;
 import com.domain.PiPlanning;
@@ -32,30 +33,36 @@ public class SolutionToOutputModel implements Serializable {
                 outputSprint.setNonUsedSdCapacity(a.getUnusedSDCapacity());
                 outputSprint.setUsedSdCapacity(a.getMaxSdCapacity() - a.getUnusedSDCapacity());
 
+                outputSprint.setMaxQACapacity(a.getMaxQACapacity());
+                outputSprint.setNonUsedQACapacity(a.getUnusedQACapacity());
+                outputSprint.setUsedQACapacity(a.getMaxQACapacity() - a.getUnusedQACapacity());
+
                 outputSprint.setUserStoryList(solution.getUserStoryList().stream().filter(story -> (story.getSprint().getId() == outputSprint.getId())).collect(Collectors.toList()));
                 outputSprintList.add(outputSprint);
             }
             outputModel.setOutputSprintList(outputSprintList);
         }
 
-        outputModel.setTotalUnusedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
-        outputModel.setTotalUnusedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
-        outputModel.setTotalUnusedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+        outputModel.setTotalUnusedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        outputModel.setTotalUnusedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        outputModel.setTotalUnusedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+        outputModel.setTotalUnusedQACapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedQACapacity).sum());
 
-        outputModel.setTotalUndistributedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxFeCapacity).sum() -
-                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
-        outputModel.setTotalUndistributedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxBeCapacity).sum() -
-                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
-        outputModel.setTotalUndistributedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxSdCapacity).sum() -
-                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+
+        outputModel.setTotalUndistributedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getMaxFeCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        outputModel.setTotalUndistributedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getMaxBeCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        outputModel.setTotalUndistributedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getMaxSdCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
 
         outputModel.setScore(solution.getScore());
 
         //set partially planned features
         outputModel.setPartiallyPlannedFeatures(solution.getFeatureList().stream().filter(domainFeature ->
-                solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() == 6 && domainFeature.getId() == domainUserStory.getFeature().getId())
+                solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() == ModelConstants.OutOfScopeId && domainFeature.getId() == domainUserStory.getFeature().getId())
                         &&
-                        solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() != 6 && domainFeature.getId() == domainUserStory.getFeature().getId())
+                        solution.getUserStoryList().stream().anyMatch(domainUserStory -> domainUserStory.getSprint().getId() != ModelConstants.OutOfScopeId && domainFeature.getId() == domainUserStory.getFeature().getId())
 
         ).collect(Collectors.toList()));
 
@@ -82,18 +89,20 @@ public class SolutionToOutputModel implements Serializable {
                 outputUserStory.setFeatureName(a.getFeature().getSubject());
                 outputUserStory.setCapacity(a.getBeCapacity() + a.getSdCapacity() + a.getFeCapacity());   //todo: change to separate capacities. at the moment works since most of the cases only cap exists for the user
                 // story
-                if (a.getSprint().getId() == 1)
-                    outputUserStory.setSprint1name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
-                else if (a.getSprint().getId() == 2)
-                    outputUserStory.setSprint2name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
-                else if (a.getSprint().getId() == 3)
-                    outputUserStory.setSprint3name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
-                else if (a.getSprint().getId() == 4)
-                    outputUserStory.setSprint4name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
-                else if (a.getSprint().getId() == 5)
-                    outputUserStory.setSprint5name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
-                else if (a.getSprint().getId() == 6)
-                    outputUserStory.setOutOfScopeName(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + ")"));
+                if (a.getSprint().getId() == ModelConstants.Sprint1Id)
+                    outputUserStory.setSprint1name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
+                else if (a.getSprint().getId() == ModelConstants.Sprint2Id)
+                    outputUserStory.setSprint2name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
+                else if (a.getSprint().getId() == ModelConstants.Sprint3Id)
+                    outputUserStory.setSprint3name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
+                else if (a.getSprint().getId() == ModelConstants.Sprint4Id)
+                    outputUserStory.setSprint4name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
+                else if (a.getSprint().getId() == ModelConstants.Sprint5Id)
+                    outputUserStory.setSprint5name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
+                else if (a.getSprint().getId() == ModelConstants.OutOfScopeId)
+                    outputUserStory.setOutOfScopeName(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
+                else if (a.getSprint().getId() == ModelConstants.Sprint6Id)
+                    outputUserStory.setSprint6name(a.getSubject() + ". (" + (a.getFeCapacity() + a.getBeCapacity() + a.getSdCapacity() + a.getQaCapacity() + ")"));
                 outputUserStories.add(outputUserStory);
             }
             outputModel.setOutputUserStories(outputUserStories);
@@ -108,27 +117,30 @@ public class SolutionToOutputModel implements Serializable {
                         .maxFeCapacity(sprint.getMaxFeCapacity())
                         .maxBeCapacity(sprint.getMaxBeCapacity())
                         .maxSdCapacity(sprint.getMaxSdCapacity())
+                        .maxQACapacity(sprint.getMaxQACapacity())
                         .nonUsedFeCapacity(sprint.getUnusedFECapacity())
                         .nonUsedBeCapacity(sprint.getUnusedBECapacity())
                         .nonUsedSdCapacity(sprint.getUnusedSDCapacity())
+                        .nonUsedQACapacity(sprint.getUnusedQACapacity())
                         .usedFeCapacity(sprint.getMaxFeCapacity() - sprint.getUnusedFECapacity())
                         .usedBeCapacity(sprint.getMaxBeCapacity() - sprint.getUnusedBECapacity())
                         .usedSdCapacity(sprint.getMaxSdCapacity() - sprint.getUnusedSDCapacity())
+                        .usedQACapacity(sprint.getMaxQACapacity() - sprint.getUnusedQACapacity())
                         .nonUsedSharedCapacity(nonUsedSharedCapacity)
                         .usedSharedCapacity(sprint.getSharedCapacity() - nonUsedSharedCapacity).build();
                 outputModel.getSprintsCaps().add(usCapacity);
             }
         }
-        outputModel.setTotalUnusedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
-        outputModel.setTotalUnusedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
-        outputModel.setTotalUnusedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+        outputModel.setTotalUnusedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        outputModel.setTotalUnusedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        outputModel.setTotalUnusedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() != ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
 
-        outputModel.setTotalUndistributedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxFeCapacity).sum() -
-                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
-        outputModel.setTotalUndistributedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxBeCapacity).sum() -
-                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
-        outputModel.setTotalUndistributedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getMaxSdCapacity).sum() -
-                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == 6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+        outputModel.setTotalUndistributedFECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getMaxFeCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedFECapacity).sum());
+        outputModel.setTotalUndistributedBECapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getMaxBeCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedBECapacity).sum());
+        outputModel.setTotalUndistributedSDCapacity(solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getMaxSdCapacity).sum() -
+                solution.getSprintList().stream().filter(domainSprint -> domainSprint.getId() == ModelConstants.OutOfScopeId).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
 
         outputModel.setScore(solution.getScore());
 

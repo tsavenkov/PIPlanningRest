@@ -132,7 +132,7 @@ class SDCapacityConstraintProviderTest {
                 .feature(feature2)
                 .build();
 
-        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::userStoriesPriorityBasedOnFeaturePriority)
                 .given(us1, us2, us3, us4)
                 .penalizesBy(4);
     }
@@ -163,7 +163,7 @@ class SDCapacityConstraintProviderTest {
                 .feature(feature2)
                 .build();
 
-        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::userStoriesPriorityBasedOnFeaturePriority)
                 .given(us1, us2)
                 .penalizesBy(1);
     }
@@ -196,7 +196,7 @@ class SDCapacityConstraintProviderTest {
                 .feature(feature2)
                 .build();
 
-        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::userStoriesPriorityBasedOnFeaturePriority)
                 .given(us1, us2)
                 .penalizesBy(0);
     }
@@ -229,7 +229,7 @@ class SDCapacityConstraintProviderTest {
                 .feature(feature2)
                 .build();
 
-        constraintVerifier.verifyThat(TimeTableConstraintProvider::featurePriority)
+        constraintVerifier.verifyThat(TimeTableConstraintProvider::userStoriesPriorityBasedOnFeaturePriority)
                 .given(us1, us2)
                 .penalizesBy(0);
     }

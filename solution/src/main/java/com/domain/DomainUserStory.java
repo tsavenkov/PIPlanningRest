@@ -47,6 +47,10 @@ public class DomainUserStory {
 
     @Getter
     @Setter
+    private int qaCapacity;
+
+    @Getter
+    @Setter
     private int befeTotalCapacity;
 
     @Getter

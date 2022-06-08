@@ -33,7 +33,6 @@ public class DomainSprint {
     private String name;
 
 
-
     @Getter
     @Setter
     private int maxFeCapacity;
@@ -48,6 +47,10 @@ public class DomainSprint {
 
     @Getter
     @Setter
+    private int maxQACapacity;
+
+    @Getter
+    @Setter
     private int unusedFECapacity;
     @Getter
     @Setter
@@ -55,6 +58,9 @@ public class DomainSprint {
     @Getter
     @Setter
     private int unusedSDCapacity;
+    @Getter
+    @Setter
+    private int unusedQACapacity;
 
     @Getter
     @Setter
