@@ -36,7 +36,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 febeSharedStoryPointsConflictTotal(constraintFactory),  //added constraint that total fe and be can not exceed with respect to shared capacity
                 //soft constraints
                 userStoriesPriorityBasedOnFeaturePriority(constraintFactory),
-                sdCapacityGoesFirst(constraintFactory),
+//                sdCapacityGoesFirst(constraintFactory),
                 sprintCapacityUsage(constraintFactory)
                 //
         };
@@ -104,19 +104,19 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         // user story with higher prio is in sprint 6
 
         // this should also not include the feature with the fixed sprint
-        return constraintFactory
+//        return constraintFactory
+//                .forEachUniquePair(DomainUserStory.class)
+//                .filter((us1, us2) -> (
+//                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6 && us2.getFixedSprint() == 0) ||
+//                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6) && us1.getFixedSprint() == 0))
+//                .penalize("User stories priority", HardMediumSoftScore.ONE_SOFT, (us1, us2) -> 1);
+
+        return constraintFactory         //remove out of scope condition
                 .forEachUniquePair(DomainUserStory.class)
                 .filter((us1, us2) -> (
-                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getSprint().getId() != 6 && us2.getFixedSprint() == 0) ||
-                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId() && us1.getSprint().getId() != 6) && us1.getFixedSprint() == 0))
+                        (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getFixedSprint() == 0) ||
+                                (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId()) && us1.getFixedSprint() == 0))
                 .penalize("User stories priority", HardMediumSoftScore.ONE_SOFT, (us1, us2) -> 1);
-
-//        return constraintFactory         //remove out of scope condition
-//                        .forEachUniquePair(DomainUserStory.class)
-//                        .filter((us1, us2) -> (
-//                                (us1.getFeature().getPriority() < us2.getFeature().getPriority() && us1.getSprint().getId() < us2.getSprint().getId() && us2.getFixedSprint() == 0) ||
-//                                        (us1.getFeature().getPriority() > us2.getFeature().getPriority() && us1.getSprint().getId() > us2.getSprint().getId()) && us1.getFixedSprint() == 0))
-//                        .penalize("User stories priority", HardMediumSoftScore.ONE_SOFT, (us1, us2) -> 1);
     }
 
 //    public Constraint featurePriority(ConstraintFactory constraintFactory) {
