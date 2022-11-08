@@ -3,8 +3,8 @@
     {
       "id": 1,
       "name": "Sprint 1",
-      "maxFeCapacity": 10,
-      "maxBeCapacity": 12,
+      "maxFeCapacity": 5,
+      "maxBeCapacity": 10,
       "maxSdCapacity": 8,
       "maxQaCapacity": 4
     },
@@ -239,10 +239,17 @@
           "qaCapacity": 0
         },
         {
-          "subject": "SD Analysis on Multiproduct offer",
+          "subject": "SD Analysis on Multiproduct offer. 1",
           "feCapacity": 0,
           "beCapacity": 0,
-          "sdCapacity": 8,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD Analysis on Multiproduct offer. 2",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 4,
           "qaCapacity": 0
         }
       ]
@@ -253,14 +260,14 @@
       "priority": 60,
       "userStories": [
         {
-          "subject": "BE Analysis ",
+          "subject": "BE Analysis on Prixx gaps ",
           "feCapacity": 0,
           "beCapacity": 5,
           "sdCapacity": 0,
           "qaCapacity": 0
         },
         {
-          "subject": "SD Analysis ",
+          "subject": "SD Analysis on Prixx gaps ",
           "feCapacity": 0,
           "beCapacity": 0,
           "sdCapacity": 8,
@@ -270,8 +277,39 @@
     },
     {
       "id": 6,
-      "subject": "SalesPR 941 Adaption of the discount process",
+      "subject": "SALESPR-896 MSD: EC - Service Katalog mr2022-09",
       "priority": 50,
+      "userStories": [
+        {
+          "subject": "FE Catalog Change MR2022-09",
+          "feCapacity": 9,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "fixedSprint": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE Catalog Change MR2022-09 ",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "fixedSprint": 5,
+          "qaCapacity": 0
+        },
+		        {
+          "subject": "BE Catalog Change MR2022-09 ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 9,
+          "fixedSprint": 5,
+          "qaCapacity": 0
+        }
+      ]
+    },
+	{
+      "id": 7,
+      "subject": "SalesPR 941 Adaption of the discount process",
+      "priority": 40,
       "userStories": [
         {
           "subject": "FE Move the Insert discount error handling to Complete partner request button",
@@ -316,181 +354,6 @@
           "qaCapacity": 0
         }
       ]
-    },
-    {
-      "id": 7,
-      "subject": "SalesPR 204 Offer approval by Swisscom",
-      "priority": 40,
-      "userStories": [
-        {
-          "subject": "fe New components on summary page: 'Request for approval' button, hint and approval box + hide/show  button based on design complexity flag (HIGH/LOW)",
-          "feCapacity": 13,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE if partner clicks product selection when the ownsership is swisscom then show blue banner",
-          "feCapacity": 1,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE Blue banner on generate offer",
-          "feCapacity": 2,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE Blue banner on request discount",
-          "feCapacity": 2,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE Call Request for Approval from BE + green banner + refresh permissions after ownership change",
-          "feCapacity": 8,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE Update Complete request : add Approved/Not approved checkbox",
-          "feCapacity": 3,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE Refetch the offer complexity on each action which can affect it",
-          "feCapacity": 3,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE new call to get complexity on  summary",
-          "feCapacity": 3,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Extend create product with the 2 new flags : design complexity, design approval ",
-          "feCapacity": 0,
-          "beCapacity": 2,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Update design complexity flag to HIGH/LOW on all places where we change the configuration – location, candidate, configuration save depending on selected options",
-          "feCapacity": 0,
-          "beCapacity": 5,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Extend variant xml for doco with the 2 new flags on design level",
-          "feCapacity": 0,
-          "beCapacity": 2,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Check flags on request discount (error if Design Complexity = HIGH, Design Approval = NO)",
-          "feCapacity": 0,
-          "beCapacity": 3,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE New endpoint for Request for Approval",
-          "feCapacity": 0,
-          "beCapacity": 5,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Update complete partner request endpoint : set Design Approval flag",
-          "feCapacity": 0,
-          "beCapacity": 3,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE  Update Design Approval flag to NO on all places where we change the configuration – location, candidate, etc (if YES and any changes are made on design by partner) ",
-          "feCapacity": 0,
-          "beCapacity": 5,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Calculate complexity of the offer. flag on the offer",
-          "feCapacity": 0,
-          "beCapacity": 2,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "BE Calculate complexity of the offer. new call to get complexity on  summary",
-          "feCapacity": 0,
-          "beCapacity": 5,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "SD Add Design Complexity, Design Approval flags on product",
-          "feCapacity": 0,
-          "beCapacity": 0,
-          "sdCapacity": 3,
-          "qaCapacity": 0
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "subject": "SalesPR 840 MSD Partner - Search customer to create offer",
-      "priority": 30,
-      "userStories": [
-        {
-          "subject": "FE Partner need to search customer to create offer, For that change customer dropdown into searchbox in create offer applet",
-          "feCapacity": 8,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE add information icon near customer searchbox label",
-          "feCapacity": 1,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        },
-        {
-          "subject": "FE Search in only  customer list and shows in alphabetical order",
-          "feCapacity": 3,
-          "beCapacity": 0,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "subject": "SalesPR 1041 MSD Partner - Prepare API to update offer status from external system",
-      "priority": 30,
-      "userStories": [
-        {
-          "subject": "BE Implement new API definition",
-          "feCapacity": 0,
-          "beCapacity": 8,
-          "sdCapacity": 0,
-          "qaCapacity": 0
-        }
-      ]
     }
-  ]
-}
+     ]
+    }
