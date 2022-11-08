@@ -1,0 +1,690 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 5,
+      "maxBeCapacity": 2,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 3,
+      "maxQaCapacity": 2
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 4,
+      "maxBeCapacity": 1,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 2,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "maxFeCapacity": 3,
+      "maxBeCapacity": 2,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 3,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 4,
+      "name": "Sprint 4",
+      "maxFeCapacity": 3,
+      "maxBeCapacity": 2,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 1,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 5,
+      "name": "Sprint 5",
+      "maxFeCapacity": 4,
+      "maxBeCapacity": 2,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 3,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000,
+      "maxQaCapacity": 1000
+    },
+    {
+      "id": 7,
+      "name": "Sprint 6",
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 0,
+      "maxQaCapacity": 0
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "1147 batch delete json",
+      "priority": 5,
+      "userStories": [
+        {
+          "subject": "SD: Descirptors transfromation ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 8,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Automation tool update",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "# 1283 MSD: EC - Service Katalog mr2023-02",
+      "priority": 12,
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification Part 1",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Catalog modification Part 2",
+          "feCapacity": 0,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "feCapacity": 7,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view ",
+          "feCapacity": 3,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "feCapacity": 3,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: EC catalog be SEM adjustments",
+          "feCapacity": 0,
+          "fixedSprint": 4,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subject": "1073 - SD upgrade",
+      "priority": 6,
+      "userStories": [
+        {
+          "subject": "sd: Dev enviornment upgrade",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Vega env upgrade",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: prod update",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: modification SEM adjustments",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: api modification SEM adjustments",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "subject": "# 1188 Online shop article",
+      "priority": 8,
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view",
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: SEM adjustments",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "subject": "## 1288 MSD: MSTT - Service Katalog mr2023-02",
+      "priority": 11,
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "fixedSprint": 4,
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view",
+          "fixedSprint": 4,
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "fixedSprint": 4,
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: SEM adjustments",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 1,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subject": "### 1233 MSD - BWS: Service Catalog mr2023-01",
+      "priority": 9,
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification Part 1",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Automation tool modification Part 2",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: service engineering  SEM adjustments",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: service engineering  SEM adjustments",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: catalog mappings ",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: service engineering  SEM adjustments ",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "subject": "1190 UPCI",
+      "priority": 7,
+      "userStories": [
+        {
+          "subject": "sd: Catalog population with UPCIs ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 1,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: migration of designs in case if UPN is there and UPCI there.",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: add UPCI to xml",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: check if we store on Design and add then populate UPCI at design",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "subject": "1321 - Table-View incl. Bulk-Change - Options with Price = Offer (& OTC only) can be bulkchanged to Price = CHF xyz",
+      "priority": 13,
+      "userStories": [
+        {
+          "subject": "FE: introduce the button ",
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: add the dialog price change (we show only filtered options which exist)",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: end point to call be to get and save (async)",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: socket and async processing of the update",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: implement the update and get logic (match the prices and options) Part 1",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: implement the update and get logic (match the prices and options) Part 2",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: implement the update and get logic (match the prices and options) Part 3",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "subject": "### 1234 hardware packages",
+      "priority": 10,
+      "userStories": [
+        {
+          "subject": "sd: Catalog population (create options and prices) ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Automation tool update",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Extend the data model option + price is now 4:1",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: review price functions (extend the logic with the new requirement 4 to 1) ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: review the struct storage in SD *ensure that groups with 4 options can be stored independently",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: add the amount to groups",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: real time price calculation (operation with current option list)",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: adjust the service operations",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: performance tests",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: populate the rendering jsons ",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: develop the amounts for groups. part 1",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: develop the amounts for groups. part 1",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: pricing popup ",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: revise the functions extend with the capability of numbers for groups",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: extension of xml which will get the group and form the block with the bundle",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: operation on be to return the list of options",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "subject": "1281 no more inconsistent configs",
+      "priority": 3,
+      "userStories": [
+        {
+          "subject": "sd: Script connect to the database, get all candidates, check support time and bandwidth",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: Jenkins: job that runs and sends emails, manual + cron",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: rest api which checks candidates. Return list of candidate and for each option group which is missing",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "qa: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "subject": "1345 delete GEO ccoordinates",
+      "priority": 2,
+      "userStories": [
+        {
+          "subject": "sd: Delete coordinates and clean data",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: Jenkins: job that runs and sends emails, manual + cron",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: verify not used anywhaere",
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be:  delete from Gaia call",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "delete from processing to SD",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+  ]
+}
+  ]
+}

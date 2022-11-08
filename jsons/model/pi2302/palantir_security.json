@@ -1,0 +1,208 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 3,
+      "maxBeCapacity": 1,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 2,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 2,
+      "maxBeCapacity": 1,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 1,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "maxFeCapacity": 2,
+      "maxBeCapacity": 1,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 2,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 4,
+      "name": "Sprint 4",
+      "maxFeCapacity": 2,
+      "maxBeCapacity": 1,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 1,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 5,
+      "name": "Sprint 5",
+      "maxFeCapacity": 2,
+      "maxBeCapacity": 1,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 2,
+      "maxQaCapacity": 1
+    },
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000,
+      "maxQaCapacity": 1000
+    },
+    {
+      "id": 7,
+      "name": "Sprint 6",
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 0,
+      "maxQaCapacity": 0
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "subject": "1147 batch delete json",
+      "priority": 5,
+      "userStories": [
+        {
+          "subject": "SD: Descirptors transfromation ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 8,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Automation tool update",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subject": "1073 - SD upgrade",
+      "priority": 6,
+      "userStories": [
+        {
+          "subject": "sd: Dev enviornment upgrade",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Vega env upgrade",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: prod update",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: modification SEM adjustments",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: api modification SEM adjustments",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "subject": "1345 delete GEO ccoordinates",
+      "priority": 2,
+      "userStories": [
+        {
+          "subject": "sd: Delete coordinates and clean data",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: Jenkins: job that runs and sends emails, manual + cron",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: verify not used anywhaere",
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be:  delete from Gaia call",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "delete from processing to SD",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "subject": "1346 db copy",
+      "priority": 10,
+      "userStories": [
+        {
+          "subject": "SD: Create the VM with SD accessible from corpnet",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 1,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Prepare the sanitize / masking script covering the attributes",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        }
+      ]
+    }
+  ]
+}

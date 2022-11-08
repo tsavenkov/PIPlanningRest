@@ -1,0 +1,389 @@
+{
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "maxFeCapacity": 14,
+      "maxBeCapacity": 5,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 11,
+      "maxQaCapacity": 3
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "maxFeCapacity": 11,
+      "maxBeCapacity": 3,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 6,
+      "maxQaCapacity": 2
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 5,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 9,
+      "maxQaCapacity": 2
+    },
+    {
+      "id": 4,
+      "name": "Sprint 4",
+      "maxFeCapacity": 10,
+      "maxBeCapacity": 5,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 4,
+      "maxQaCapacity": 2
+    },
+    {
+      "id": 5,
+      "name": "Sprint 5",
+      "maxFeCapacity": 12,
+      "maxBeCapacity": 5,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 10,
+      "maxQaCapacity": 4
+    },
+    {
+      "id": 6,
+      "name": "Out of scope",
+      "maxFeCapacity": 1000,
+      "maxBeCapacity": 1000,
+      "maxSdCapacity": 1000,
+      "maxQaCapacity": 1000
+    },
+    {
+      "id": 7,
+      "name": "Sprint 6",
+      "maxFeCapacity": 0,
+      "maxBeCapacity": 0,
+      "sharedCapacity": 0,
+      "maxSdCapacity": 0,
+      "maxQaCapacity": 0
+    }
+  ],
+  "features": [
+    {
+      "id": 2,
+      "subject": "# 1283 MSD: EC - Service Katalog mr2023-02",
+      "priority": 12,             
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification Part 1",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Catalog modification Part 2",
+          "feCapacity": 0,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "feCapacity": 7,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view ",
+          "feCapacity": 3,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "feCapacity": 3,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: EC catalog be SEM adjustments",
+          "feCapacity": 0,
+          "fixedSprint": 4,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "fixedSprint": 4,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "subject": "## 1288 MSD: MSTT - Service Katalog mr2023-02",
+      "priority": 11,
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "fixedSprint": 4,
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view",
+          "fixedSprint": 4,
+          "feCapacity": 1,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "fixedSprint": 4,
+          "feCapacity": 2,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: SEM adjustments",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 1,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "fixedSprint": 4,
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subject": "### 1233 MSD - BWS: Service Catalog mr2023-01",
+      "priority": 9,
+      "userStories": [
+        {
+          "subject": "SD: Catalog modification Part 1",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: Automation tool modification Part 2",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "SD: service engineering  SEM adjustments",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC renderer modification",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC table view",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: EC bulk operations",
+          "feCapacity": 3,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "FE: service engineering  SEM adjustments",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: catalog mappings ",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "BE: service engineering  SEM adjustments ",
+          "feCapacity": 0,
+          "beCapacity": 2,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 3
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "subject": "### 1234 hardware packages",
+      "priority": 10,
+      "userStories": [
+        {
+          "subject": "sd: Catalog population (create options and prices) ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Automation tool update",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: Extend the data model option + price is now 4:1",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: review price functions (extend the logic with the new requirement 4 to 1) ",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: review the struct storage in SD *ensure that groups with 4 options can be stored independently",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: add the amount to groups",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: real time price calculation (operation with current option list)",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 3,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: adjust the service operations",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 5,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "sd: performance tests",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 2,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: populate the rendering jsons ",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: develop the amounts for groups. part 1",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: develop the amounts for groups. part 1",
+          "feCapacity": 5,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "fe: pricing popup ",
+          "feCapacity": 8,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: revise the functions extend with the capability of numbers for groups",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: extension of xml which will get the group and form the block with the bundle",
+          "feCapacity": 0,
+          "beCapacity": 3,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "be: operation on be to return the list of options",
+          "feCapacity": 0,
+          "beCapacity": 5,
+          "sdCapacity": 0,
+          "qaCapacity": 0
+        },
+        {
+          "subject": "QA: testing",
+          "feCapacity": 0,
+          "beCapacity": 0,
+          "sdCapacity": 0,
+          "qaCapacity": 2
+        }
+      ]
+    }
+  ]
+}

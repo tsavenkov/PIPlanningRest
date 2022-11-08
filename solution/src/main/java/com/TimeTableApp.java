@@ -59,10 +59,12 @@ public class TimeTableApp {
             int usedFECapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getFeCapacity).sum();
             int usedBECapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getBeCapacity).sum();
             int usedSDCapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getSdCapacity).sum();
+            int usedQACapacity = solution.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getQaCapacity).sum();
 
             sprint.setUnusedFECapacity(sprint.getMaxFeCapacity() - usedFECapacity);
             sprint.setUnusedBECapacity(sprint.getMaxBeCapacity() - usedBECapacity);
             sprint.setUnusedSDCapacity(sprint.getMaxSdCapacity() - usedSDCapacity);
+            sprint.setUnusedQACapacity(sprint.getMaxQACapacity() - usedQACapacity);
         }
         // Visualize the solution
         printTimetable(solution);
@@ -171,6 +173,8 @@ public class TimeTableApp {
         LOGGER.info(" TOTAL FE unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedFECapacity).sum());
         LOGGER.info(" TOTAL BE unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedBECapacity).sum());
         LOGGER.info(" TOTAL SD unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedSDCapacity).sum());
+        LOGGER.info(" TOTAL QA unused = " + piPlanning.getSprintList().stream().filter(domainSprint -> domainSprint.getId()!=6).mapToInt(DomainSprint::getUnusedQACapacity).sum());
+
 
         for (DomainSprint sprint : piPlanning.getSprintList()) {
 
@@ -179,6 +183,7 @@ public class TimeTableApp {
             LOGGER.info(" FE unused = " + sprint.getUnusedFECapacity());
             LOGGER.info(" BE unused = " + sprint.getUnusedBECapacity());
             LOGGER.info(" SD unused = " + sprint.getUnusedSDCapacity());
+            LOGGER.info(" QA unused = " + sprint.getUnusedQACapacity());
             LOGGER.info("");
             piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).forEach(us -> LOGGER.info(us.getSubject() + " SP: " + (us.getFeCapacity() + us.getBeCapacity() + us.getSdCapacity())));
 //            int usedFECapacity = piPlanning.getUserStoryList().stream().filter(a -> a.getSprint().getName().equals(sprint.getName())).mapToInt(DomainUserStory::getFeCapacity).sum();
