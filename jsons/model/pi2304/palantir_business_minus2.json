@@ -3,47 +3,47 @@
     {
       "id" : 1,
       "name" : "Sprint 1",
-      "maxFeCapacity" : 14,
+      "maxFeCapacity" : 12,
       "maxBeCapacity" : 5,
       "sharedCapacity" : 0,
       "maxSdCapacity" : 11,
-      "maxQaCapacity" : 3
+      "maxQaCapacity" : 5
     },
     {
       "id" : 2,
       "name" : "Sprint 2",
-      "maxFeCapacity" : 11,
-      "maxBeCapacity" : 3,
+      "maxFeCapacity" : 15,
+      "maxBeCapacity" : 5,
       "sharedCapacity" : 0,
-      "maxSdCapacity" : 6,
-      "maxQaCapacity" : 2
+      "maxSdCapacity" : 9,
+      "maxQaCapacity" : 6
     },
     {
       "id" : 3,
       "name" : "Sprint 3",
-      "maxFeCapacity" : 10,
+      "maxFeCapacity" : 17,
       "maxBeCapacity" : 5,
       "sharedCapacity" : 0,
-      "maxSdCapacity" : 9,
-      "maxQaCapacity" : 2
+      "maxSdCapacity" : 5,
+      "maxQaCapacity" : 11
     },
     {
       "id" : 4,
       "name" : "Sprint 4",
-      "maxFeCapacity" : 10,
-      "maxBeCapacity" : 5,
+      "maxFeCapacity" : 17,
+      "maxBeCapacity" : 6,
       "sharedCapacity" : 0,
-      "maxSdCapacity" : 4,
-      "maxQaCapacity" : 2
+      "maxSdCapacity" : 12,
+      "maxQaCapacity" : 6
     },
     {
       "id" : 5,
       "name" : "Sprint 5",
-      "maxFeCapacity" : 0,
-      "maxBeCapacity" : 0,
+      "maxFeCapacity" : 14,
+      "maxBeCapacity" : 5,
       "sharedCapacity" : 0,
-      "maxSdCapacity" : 0,
-      "maxQaCapacity" : 0
+      "maxSdCapacity" : 9,
+      "maxQaCapacity" : 5
     },
     {
       "id" : 6,
@@ -324,76 +324,6 @@
       ]
     },
     {
-      "id" : 7,
-      "subject" : "SalesPR-1430 Add Swisscom Services to offer. 36sp",
-      "priority" : 90,
-      "userStories" : [
-        {
-          "subject" : "sd: add the price group associations for swisscom individual ",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 5,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "sd: storage of swisscom individual services",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 3,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "sd: price groups for prixx",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 5,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: new swisscom services block for partners",
-          "feCapacity" : 5,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: dialogs buttons, etc",
-          "feCapacity" : 5,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: price details page",
-          "feCapacity" : 3,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "be: xml modification",
-          "feCapacity" : 0,
-          "beCapacity" : 3,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0,
-          "ArrayItem" : {
-            "subject" : "be: modify the prixx discount process",
-            "feCapacity" : 0,
-            "beCapacity" : 5,
-            "sdCapacity" : 0,
-            "qaCapacity" : 0
-          }
-        },
-        {
-          "subject" : "QA: testing",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 2
-        }
-      ]
-    },
-    {
       "id" : 8,
       "subject" : "1399 B2BOST-5276, Teil MSD: EC: Firewall Advanced wird zu Firewall Standard - 15sp.",
       "priority" : 60,
@@ -429,110 +359,12 @@
       ]
     },
     {
-      "id" : 9,
-      "subject" : "1414 B2BOST-6549, Teil MSD: EC Dedicated Internet L & XL. 42sp",
-      "priority" : 59,
-      "userStories" : [
-        {
-          "subject" : "sd: configuration in sd",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 5,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "sd: configuration templates",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 3,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "sd: add rendering jsons",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 3,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "sd: automation tool",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 2,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: add rendering ",
-          "feCapacity" : 5,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: update of dropdowns",
-          "feCapacity" : 3,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: add jsons for bulk changes, table view columns",
-          "feCapacity" : 8,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "fe: pricing details ",
-          "feCapacity" : 5,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "be: extra mappings + bug fixes",
-          "feCapacity" : 0,
-          "beCapacity" : 3,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "be: xml review for doco",
-          "feCapacity" : 0,
-          "beCapacity" : 3,
-          "sdCapacity" : 0,
-          "qaCapacity" : 0
-        },
-        {
-          "subject" : "qa: testing",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 0,
-          "qaCapacity" : 3
-        }
-      ]
-    },
-    {
       "id" : 10,
       "subject" : "1400 B2BOST-5764, Teil MSD: EC-M/DualNet: Diversifizierte Hauseinführung (2-Ducts) - New ToolTip- 3sp\n.",
       "priority" : 96,
       "userStories" : [
         {
           "subject" : "sd: update of the hits",
-          "feCapacity" : 0,
-          "beCapacity" : 0,
-          "sdCapacity" : 3,
-          "qaCapacity" : 0
-        }
-      ]
-    },
-    {
-      "id" : 11,
-      "subject" : "1467: Architecture & Security topics PI2023-04: creation of automated pipeline for db preprod from abroad clone",
-      "priority" : 3,
-      "userStories" : [
-        {
-          "subject" : "ops:\npipeline creation\nchecking connectivity\nverifying sync / async\nrestoring the users from test (since they are ovverident with users from prod)\n\n",
           "feCapacity" : 0,
           "beCapacity" : 0,
           "sdCapacity" : 3,

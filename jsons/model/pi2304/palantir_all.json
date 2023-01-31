@@ -1,0 +1,544 @@
+{
+  "sprints" : [
+    {
+      "id" : 1,
+      "name" : "Sprint 1",
+      "maxFeCapacity" : 14,
+      "maxBeCapacity" : 5,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 11,
+      "maxQaCapacity" : 3
+    },
+    {
+      "id" : 2,
+      "name" : "Sprint 2",
+      "maxFeCapacity" : 11,
+      "maxBeCapacity" : 3,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 6,
+      "maxQaCapacity" : 2
+    },
+    {
+      "id" : 3,
+      "name" : "Sprint 3",
+      "maxFeCapacity" : 10,
+      "maxBeCapacity" : 5,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 9,
+      "maxQaCapacity" : 2
+    },
+    {
+      "id" : 4,
+      "name" : "Sprint 4",
+      "maxFeCapacity" : 10,
+      "maxBeCapacity" : 5,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 4,
+      "maxQaCapacity" : 2
+    },
+    {
+      "id" : 5,
+      "name" : "Sprint 5",
+      "maxFeCapacity" : 0,
+      "maxBeCapacity" : 0,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 0,
+      "maxQaCapacity" : 0
+    },
+    {
+      "id" : 6,
+      "name" : "Out of scope",
+      "maxFeCapacity" : 1000,
+      "maxBeCapacity" : 1000,
+      "maxSdCapacity" : 1000,
+      "maxQaCapacity" : 1000
+    },
+    {
+      "id" : 7,
+      "name" : "Out of scope",
+      "maxFeCapacity" : 0,
+      "maxBeCapacity" : 0,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 0,
+      "maxQaCapacity" : 0
+    }
+  ],
+  "features" : [
+    {
+      "id" : 1,
+      "subject" : "# 1284 MSD: EC - Service Katalog mr2023-04. 10sp",
+      "priority" : 99,
+      "userStories" : [
+        {
+          "subject" : "SD: Catalog modification Part 1",
+          "fixedSprint" : 4,
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "FE: EC renderer modification",
+          "feCapacity" : 5,
+          "fixedSprint" : 4,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: EC catalog be SEM adjustments",
+          "feCapacity" : 0,
+          "fixedSprint" : 4,
+          "beCapacity" : 1,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "QA: testing",
+          "feCapacity" : 0,
+          "fixedSprint" : 4,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 1
+        }
+      ]
+    },
+    {
+      "id" : 2,
+      "subject" : "## 1289 MSD: MSTT - Service Katalog mr2023-04. 10sp",
+      "priority" : 98,
+      "userStories" : [
+        {
+          "subject" : "SD: Catalog modification Part 1",
+          "fixedSprint" : 4,
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "FE: EC renderer modification",
+          "feCapacity" : 5,
+          "fixedSprint" : 4,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: EC catalog be SEM adjustments",
+          "feCapacity" : 0,
+          "fixedSprint" : 4,
+          "beCapacity" : 1,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "QA: testing",
+          "feCapacity" : 0,
+          "fixedSprint" : 4,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 1
+        }
+      ]
+    },
+    {
+      "id" : 3,
+      "subject" : "### 1383 MSD - BWS: Service Catalog mr2023-03. 25sp",
+      "priority" : 100,
+      "userStories" : [
+        {
+          "subject" : "SD: Catalog modification Part 1",
+          "fixedSprint" : 1,
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "SD: Catalog modification Part 2",
+          "fixedSprint" : 1,
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "FE: EC renderer modification Part 1",
+          "fixedSprint" : 1,
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "FE: EC renderer modification Part 2",
+          "fixedSprint" : 1,
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "BE: catalog mappings ",
+          "fixedSprint" : 1,
+          "feCapacity" : 0,
+          "beCapacity" : 2,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "QA: testing",
+          "fixedSprint" : 1,
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 3
+        }
+      ]
+    },
+    {
+      "id" : 4,
+      "subject" : "1409 Performance optimization. 25 sp",
+      "priority" : 80,
+      "userStories" : [
+        {
+          "subject" : "sd: data model revision (variant/design service names investigated)\n",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "sd: removal of unnecessary propagation ",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "SD: storage of compressed json data",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: modification of needed SD adjustments\n",
+          "feCapacity" : 0,
+          "beCapacity" : 5,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: compression/decompression of SD json calls\n",
+          "feCapacity" : 0,
+          "beCapacity" : 3,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "QA: manual testing\n",
+          "feCapacity" : 0,
+          "beCapacity" : 3,
+          "sdCapacity" : 0,
+          "qaCapacity" : 2
+        }
+      ]
+    },
+    {
+      "id" : 5,
+      "subject" : "1274 - MSD - BWS:  Business rules on User Services (\"Requires\") 12sp",
+      "priority" : 89,
+      "userStories" : [
+        {
+          "subject" : "FE: - modification of generic renderer",
+          "feCapacity" : 8,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "BE: mapping in case needed for generic renderer.",
+          "feCapacity" : 0,
+          "beCapacity" : 2,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "QA: testing",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 2
+        }
+      ]
+    },
+    {
+      "id" : 6,
+      "subject" : "1405 - MSD - BWS: Options without price 16sp.",
+      "priority" : 70,
+      "userStories" : [
+        {
+          "subject" : "FE: price details windows update",
+          "feCapacity" : 2,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: update corporate FE (+ 2sp)\n",
+          "feCapacity" : 2,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "BE: modification of the xml with the null values",
+          "feCapacity" : 0,
+          "beCapacity" : 5,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "SD: price calculations functions review",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "SD: update operations that return options.",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 2,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "QA: testing",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 2
+        }
+      ]
+    },
+    {
+      "id" : 7,
+      "subject" : "SalesPR-1430 Add Swisscom Services to offer. 36sp",
+      "priority" : 90,
+      "userStories" : [
+        {
+          "subject" : "sd: add the price group associations for swisscom individual ",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "sd: storage of swisscom individual services",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "sd: price groups for prixx",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: new swisscom services block for partners",
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: dialogs buttons, etc",
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: price details page",
+          "feCapacity" : 3,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: xml modification",
+          "feCapacity" : 0,
+          "beCapacity" : 3,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0,
+          "ArrayItem" : {
+            "subject" : "be: modify the prixx discount process",
+            "feCapacity" : 0,
+            "beCapacity" : 5,
+            "sdCapacity" : 0,
+            "qaCapacity" : 0
+          }
+        },
+        {
+          "subject" : "QA: testing",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 2
+        }
+      ]
+    },
+    {
+      "id" : 8,
+      "subject" : "1399 B2BOST-5276, Teil MSD: EC: Firewall Advanced wird zu Firewall Standard - 15sp.",
+      "priority" : 60,
+      "userStories" : [
+        {
+          "subject" : "sd: change the config",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: check dependency json for company profile",
+          "feCapacity" : 3,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: renderer update",
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "qa: testing",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 2
+        }
+      ]
+    },
+    {
+      "id" : 9,
+      "subject" : "1414 B2BOST-6549, Teil MSD: EC Dedicated Internet L & XL. 42sp",
+      "priority" : 3,
+      "userStories" : [
+        {
+          "subject" : "sd: configuration in sd",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 5,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "sd: configuration templates",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "sd: add rendering jsons",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "sd: automation tool",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 2,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: add rendering ",
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: update of dropdowns",
+          "feCapacity" : 3,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: add jsons for bulk changes, table view columns",
+          "feCapacity" : 8,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "fe: pricing details ",
+          "feCapacity" : 5,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: extra mappings + bug fixes",
+          "feCapacity" : 0,
+          "beCapacity" : 3,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "be: xml review for doco",
+          "feCapacity" : 0,
+          "beCapacity" : 3,
+          "sdCapacity" : 0,
+          "qaCapacity" : 0
+        },
+        {
+          "subject" : "qa: testing",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 0,
+          "qaCapacity" : 3
+        }
+      ]
+    },
+    {
+      "id" : 10,
+      "subject" : "1400 B2BOST-5764, Teil MSD: EC-M/DualNet: Diversifizierte Hauseinführung (2-Ducts) - New ToolTip- 3sp\n.",
+      "priority" : 96,
+      "userStories" : [
+        {
+          "subject" : "sd: update of the hits",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        }
+      ]
+    },
+    {
+      "id" : 11,
+      "subject" : "1467: Architecture & Security topics PI2023-04: creation of automated pipeline for db preprod from abroad clone",
+      "priority" : 3,
+      "userStories" : [
+        {
+          "subject" : "ops:\npipeline creation\nchecking connectivity\nverifying sync / async\nrestoring the users from test (since they are ovverident with users from prod)\n\n",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        }
+      ]
+    }
+  ]
+}

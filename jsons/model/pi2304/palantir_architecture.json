@@ -1,0 +1,82 @@
+{
+  "sprints" : [
+    {
+      "id" : 1,
+      "name" : "Sprint 1",
+      "maxFeCapacity" : 2,
+      "maxBeCapacity" : 1,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 2,
+      "maxQaCapacity" : 1
+    },
+    {
+      "id" : 2,
+      "name" : "Sprint 2",
+      "maxFeCapacity" : 3,
+      "maxBeCapacity" : 1,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 2,
+      "maxQaCapacity" : 1
+    },
+    {
+      "id" : 3,
+      "name" : "Sprint 3",
+      "maxFeCapacity" : 3,
+      "maxBeCapacity" : 1,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 2,
+      "maxQaCapacity" : 1
+    },
+    {
+      "id" : 4,
+      "name" : "Sprint 4",
+      "maxFeCapacity" : 3,
+      "maxBeCapacity" : 1,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 2,
+      "maxQaCapacity" : 1
+    },
+    {
+      "id" : 5,
+      "name" : "Sprint 5",
+      "maxFeCapacity" : 3,
+      "maxBeCapacity" : 1,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 2,
+      "maxQaCapacity" : 1
+    },
+    {
+      "id" : 6,
+      "name" : "Out of scope",
+      "maxFeCapacity" : 1000,
+      "maxBeCapacity" : 1000,
+      "maxSdCapacity" : 1000,
+      "maxQaCapacity" : 1000
+    },
+    {
+      "id" : 7,
+      "name" : "Out of scope",
+      "maxFeCapacity" : 0,
+      "maxBeCapacity" : 0,
+      "sharedCapacity" : 0,
+      "maxSdCapacity" : 0,
+      "maxQaCapacity" : 0
+    }
+  ],
+  "features" : [
+    {
+      "id" : 11,
+      "subject" : "1467: Architecture & Security topics PI2023-04: creation of automated pipeline for db preprod from abroad clone",
+      "priority" : 3,
+      "userStories" : [
+        {
+          "subject" : "ops:\npipeline creation\nchecking connectivity\nverifying sync / async\nrestoring the users from test (since they are ovverident with users from prod)\n\n",
+          "feCapacity" : 0,
+          "beCapacity" : 0,
+          "sdCapacity" : 3,
+          "qaCapacity" : 0
+        }
+      ]
+    }
+  ]
+}
